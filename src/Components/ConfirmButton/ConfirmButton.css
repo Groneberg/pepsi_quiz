@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "BlissProBold";
+    src: local("BlissProBold"),
+    url("../../fonts/BlissProBold.otf") format("opentype");
+}
+
+.confirmButton {
+    font-family: "BlissProBold", sans-serif;
+    color: #006EB9;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: white;
+    border-style: none;
+    border-radius: 25px;
+    padding: 15px 25px;
+    height: 45px;
+    width: 145px;
+}

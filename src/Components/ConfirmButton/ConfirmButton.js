@@ -1,4 +1,4 @@
-import '../../fonts/BlissProBold.otf'
+// import '../../fonts/BlissProBold.otf'
 import './ConfirmButton.css'
 
 

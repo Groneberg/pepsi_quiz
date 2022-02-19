@@ -1,7 +1,10 @@
 
-function Start() {
+function Root() {
     return (
         <ul>
+            <li>
+                <a href="/start">Start</a>
+            </li>
             <li>
                 <a href="/dragDrop">DragDrop</a>
             </li>
@@ -12,5 +15,5 @@ function Start() {
     );
 }
 
-export default Start;
+export default Root;
 

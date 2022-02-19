@@ -1,0 +1,54 @@
+@font-face {
+    font-family: "BlissProRegular";
+    src: local("BlissProRegular"),
+    url("../../fonts/BlissProRegular.otf") format("opentype");
+}
+@font-face {
+    font-family: "BlissProBold";
+    src: local("BlissProBold"),
+    url("../../fonts/BlissProBold.otf") format("opentype");
+}
+
+
+.toDoCheckListWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "BlissProRegular", sans-serif;
+    margin-bottom: 50px;
+    background-color: #fff;
+}
+.toDoCheckListForm {
+    width: 320px;
+    background-color: #ffffff;
+    border: 1px solid #707070;
+    border-radius: 50px;
+    position: relative;
+    top: -150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.toDoChecklistHeadLine {
+    font-family: "BlissProBold", sans-serif;
+    font-size: 1.25rem;
+    color: #006EB9;
+    margin: 20px auto 10px auto;
+}
+
+.toDoCheckListUnorderedList {
+    margin: 5px 20px 15px 20px;
+}
+
+li {
+    display: flex;
+    align-items: center;
+}
+.toDoCheckListListElement {
+    padding: 0px 0 15px 0;
+    display: flex;
+}
+.toDoCheckListWrapper .headerWrapper {
+    min-height: 260px;
+}

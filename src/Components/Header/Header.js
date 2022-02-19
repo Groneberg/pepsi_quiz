@@ -1,10 +1,10 @@
-import './Start.css'
+import './Header.css'
 
 
 import pepsicoLogoBunt from '../../img/pepsico-logo-bunt.png';
 
 
-function Start() {
+function Header() {
     return (
        <header>
            <img className="pepsico-logo-bunt" src={pepsicoLogoBunt} />
@@ -19,18 +19,8 @@ function Start() {
                </svg>
            </div>
        </header>
-
-
-
-
-
-
-
-
-
-
     );
 }
 
-export default Start;
+export default Header;
 

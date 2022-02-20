@@ -1,46 +1,74 @@
-.dragDropQuestionWrapper {
+.dragDropContainer {
     display: flex;
-    height: 200px;
-    width: 60%;
-    justify-content: center;
-    align-items: center;
-    margin: 25px 0;
-    background: #0052DA 0 0 no-repeat padding-box;
-    border: 1px solid #707070;
-    border-radius: 50px;
-    color: white;
+}
+
+.dragDropQuestionWrapper {
+    color: rgba(255,255,255,1);
+    display: flex;
+    flex-direction: column;
 }
 
 .dragDropQuestion {
-    width: 80%;
-    height: 80%;
+    margin: 100px 0 0 60px;
+    width: 540px;
+}
+
+.dragDropQuestion p:nth-of-type(1) {
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.dragDropQuestion p:nth-of-type(2) {
+    font-weight: normal;
+    font-size: 28px;
+    margin-top: 95px;
+}
+
+.answerWrapper {
+    margin: 70px 0 0 60px;
+    width: 480px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.answerWrapper div {
+    width: 120px;
+    height: 120px;
+    box-shadow: 0 10px 10px #00000029;
+    border-radius: 5px;
+}
+
+.answerWrapper div.answerD {
+    background: #F39228 0 0 no-repeat padding-box;
+}
+
+.answerWrapper div.answerB {
+    background: #95C12D 0 0 no-repeat padding-box;
+}
+
+.answerWrapper div.answerC {
+    background: #FFDF37 0 0 no-repeat padding-box;
 }
 
 .fieldWrapper {
-    height: 480px;
-    /*height: 40%;*/
+    height: 840px;
     display: flex;
-    width: 60%;
     justify-content: space-between;
-    margin: 0 0 25px 0;
+    margin: 280px 0 0 120px;
 }
 
 .field {
-    background: #F8C302 0 0 no-repeat padding-box;
-    border: 1px solid #707070;
-    border-radius: 50px;
-    width: 280px;
-    height: 480px;
+    width: 240px;
+    height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
 .field .dropField {
-    width: 200px;
-    height: 200px;
-    background: #DF9D02 0 0 no-repeat padding-box;
+    width: 120px;
+    height: 120px;
     border: 1px solid #FFFFFF;
     border-radius: 20px;
 }

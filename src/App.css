@@ -9,11 +9,19 @@ body {
   font-weight: 500;
 }
 
-p, span {
-  font-size: 32px;
+a {
+  text-decoration: none;
 }
 
 .taskContainer {
   display: flex;
   height: 100vh;
+}
+
+.active {
+  visibility: visible;
+}
+
+.inactive {
+  visibility: hidden;
 }

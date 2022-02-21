@@ -23,7 +23,7 @@ function Start() {
                 </div>
             </div>
             <div className="continueLinkWrapper">
-                <a className="continueLink" href="/dragDrop">
+                <a className="startContinueLink" href="/dragDrop">
                     <span>Ready?</span>
                     <span>Los geht's</span>
                 </a>

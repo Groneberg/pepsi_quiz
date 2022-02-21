@@ -1,7 +1,11 @@
-.dragDropContainer {
+.contentWrapper {
     display: flex;
 }
 
+.dragDropContainer {
+    display: flex;
+    flex-direction: column;
+}
 .dragDropQuestionWrapper {
     color: rgba(255,255,255,1);
     display: flex;
@@ -22,6 +26,7 @@
     font-weight: normal;
     font-size: 28px;
     margin-top: 95px;
+    color: rgba(216,232,255,1);
 }
 
 .answerWrapper {
@@ -36,6 +41,10 @@
     height: 120px;
     box-shadow: 0 10px 10px #00000029;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
 }
 
 .answerWrapper div.answerD {
@@ -50,15 +59,20 @@
     background: #FFDF37 0 0 no-repeat padding-box;
 }
 
+.answerWrapper div span {
+    font-weight: bold;
+    font-size: 60px;
+}
+
 .fieldWrapper {
-    height: 840px;
+    height: 660px;
     display: flex;
     justify-content: space-between;
-    margin: 280px 0 0 120px;
+    margin: 100px 0 0 60px;
 }
 
 .field {
-    width: 240px;
+    width: 300px;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -66,23 +80,92 @@
     align-items: center;
 }
 
-.field .dropField {
+.field .dropField_1, .field .dropField_2, .field .dropField_3 {
     width: 120px;
     height: 120px;
-    border: 1px solid #FFFFFF;
-    border-radius: 20px;
+    border: 2px solid #FFFFFF;
+    border-radius: 5px;
+    opacity: 0.23;
 }
 
 .field .imageWrapper {
-    height: 200px;
+    height: 300px;
+    display: flex;
+    align-items: center;
 }
 
 .field .imageWrapper img {
-    height: 200px;
+    height: 300px;
 }
 
-.dragDropContainer .buttonWrapper {
-    width: 60%;
+.imageWrapper svg {
+    position: absolute;
+    overflow: visible;
+    width: 287px;
+    height: 38px;
+}
+
+.imageWrapper ellipse {
+    opacity: 0.5;
+    fill: rgba(0,0,0,1);
+}
+
+.Ellipse_1 {
+    left: 665px;
+    top: 556px;
+}
+
+.Ellipse_2 {
+    left: 968px;
+    top: 556px;
+}
+
+.Ellipse_3 {
+    left: 1271px;
+    top: 556px;
+}
+
+.buttonWrapper {
+    position: absolute;
+    top: 900px;
+    left: 1574px;
+    width: 286px;
+    height: 120px;
+    box-shadow: 0 10px 10px #00000029;
+    border: 2px solid #38475C;
+    border-radius: 5px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+}
+
+.buttonWrapper .continueLink {
+    width: 254px;
+    height: 92px;
+    text-align: right;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.unanswered {
+    opacity: 0.281;
+    color: rgba(216,232,255,1);
+}
+
+.answered {
+    opacity: 1;
+    color: #1A222E;
+}
+
+.buttonWrapper span {
+
+}
+
+.buttonWrapper span:nth-of-type(1) {
+    display: block;
+}
+
+.buttonWrapper span:nth-of-type(2) {
+    font-weight:normal;
 }

@@ -52,8 +52,7 @@
     border-radius: 5px;
 }
 
-.continueLink {
-    text-decoration: none;
+.startContinueLink {
     font-size: 28px;
     display: flex;
     flex-direction: column;
@@ -61,11 +60,11 @@
     align-items: center;
 }
 
-.continueLink span {
+.startContinueLink span {
     width: 250px;
     margin: 0 0 0 33px;
 }
-.continueLink span:nth-of-type(1) {
+.startContinueLink span:nth-of-type(1) {
     font-weight: bold;
     margin-top: 22px;
 }

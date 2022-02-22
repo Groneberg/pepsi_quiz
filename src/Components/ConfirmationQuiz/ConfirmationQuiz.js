@@ -1,6 +1,8 @@
 import './ConfirmationQuiz.css'
 import Header from "../Header/Header";
 import img1 from '../../img/Bild_2.png';
+import img2 from '../../img/7Up.png';
+import img3 from '../../img/sugarfree.png';
 
 function ConfirmationQuiz() {
 
@@ -14,10 +16,20 @@ function ConfirmationQuiz() {
                             <div className= "Subtitel">
                                 Bereits die Hälfte<br/>unserer Getränke<br/> in Deutschland sind<br/>zuckerfrei!!
                             </div>
+
+                            <img className="secondImageQuiz"  src={img2} alt=""/>
+                            <img className="firstImageQuiz"  src={img1} alt=""/>
+                            <svg class="Ellipse_812">
+                            <ellipse id="Ellipse_4" rx="115" ry="115" cx="115" cy="115">
+                            </ellipse>
+                            </svg>
+                            <img className="sugar-free"  src={img3} alt=""/>
+                            <div className="fiftyPercent">
+                            		<span>50 %</span>
+                            	</div>
                         <p>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                            sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                            magna aliquyam et accusam et justo duo dolores et ea
+                            Du hast es geschafft!<br/>
+                            Hole dir deine Pepsi ab!
                         </p>
                     </div>
             </div>

@@ -15,17 +15,24 @@ const position_D = { x: 0, y: 0 };
 
 let selectedAnswer = '';
 let answerArray = [false,false,false];
+let droped_1 = false;
+let droped_2 = false;
+let droped_3 = false;
 
 function setAnswerElement(index, value ) {
     answerArray[index] = (value === selectedAnswer);
 }
 
 function checkField() {
-    let count = 0;
     if (true) {
-        let dropActivatedElements = document.querySelectorAll('.drop-activated');
-        // console.log(dropActivatedElements);
-        // console.log(dropActivatedElements.length);
+    // if (droped_1 && droped_2 && droped_3) {
+        console.log('wuhuu all droped');
+        const buttonInactive = document.getElementById("buttonInactive");
+        const buttionActive = document.getElementById("buttionActive");
+        buttonInactive.classList.add("inactive");
+        buttonInactive.classList.remove("active");
+        buttionActive.classList.add("active");
+        buttionActive.classList.remove("inactive");
     }
 
     return true;
@@ -79,83 +86,51 @@ interact('.draggable_D').draggable({
 interact('.dropField_1').dropzone({
         ondrop: function (event) {
             setAnswerElement(0, event.target.id);
-            // alert(event.relatedTarget.id
-            //     + ' was dropped into '
-            //     + event.target.id);
-            // console.log(answerArray);
             localStorage.setItem('answerArray1', answerArray);
             checkField();
+            droped_1 = true;
+            console.log(droped_1);
         }
     }).on('dropactivate', function (event) {
         event.target.classList.add('drop-activated');
+}).on('dragleave', function (event) {
+        console.log('dragleave');
+        droped_1 = false;
+        console.log(droped_1);
 });
 
 interact('.dropField_2').dropzone({
         ondrop: function (event) {
             setAnswerElement(1, event.target.id);
-            // alert(event.relatedTarget.id
-            //     + ' was dropped into '
-            //     + event.target.id);
-            // console.log(answerArray);
-            // console.log(localStorage.getItem('answerArray1'));
+            localStorage.setItem('answerArray1', answerArray);
             checkField();
+            droped_2 = true;
+            console.log(droped_2);
         }
     }).on('dropactivate', function (event) {
         event.target.classList.add('drop-activated');
+}).on('dragleave', function (event) {
+        console.log('dragleave');
+        droped_2 = false;
+        console.log(droped_2);
 });
 
 interact('.dropField_3').dropzone({
         ondrop: function (event) {
             setAnswerElement(2, event.target.id);
-            // alert(event.relatedTarget.id
-            //     + ' was dropped into '
-            //     + event.target.id);
-            // console.log(answerArray);
+            localStorage.setItem('answerArray1', answerArray);
             checkField();
+            droped_3 = true;
+            console.log(droped_3);
         }
     }).on('dropactivate', function (event) {
         event.target.classList.add('drop-activated')
     }).on('dragleave', function (event) {
         console.log('dragleave');
+        droped_3 = false;
+        console.log(droped_3);
 });
 
-// // enable draggables to be dropped into this
-// interact('.dropzone').dropzone({
-//     // only accept elements matching this CSS selector
-//     accept: '.draggable_D .draggable_B .draggable_C',
-//     // Require a 75% element overlap for a drop to be possible
-//     overlap: 0.75,
-//
-//     // listen for drop related events:
-//
-//     ondropactivate: function (event) {
-//         // add active dropzone feedback
-//         event.target.classList.add('drop-active')
-//     },
-//     ondragenter: function (event) {
-//         let draggableElement = event.relatedTarget
-//         let dropzoneElement = event.target
-//
-//         // feedback the possibility of a drop
-//         dropzoneElement.classList.add('drop-target')
-//         draggableElement.classList.add('can-drop')
-//         draggableElement.textContent = 'Dragged in'
-//     },
-//     ondragleave: function (event) {
-//         // remove the drop feedback style
-//         event.target.classList.remove('drop-target')
-//         event.relatedTarget.classList.remove('can-drop')
-//         event.relatedTarget.textContent = 'Dragged out'
-//     },
-//     ondrop: function (event) {
-//         event.relatedTarget.textContent = 'Dropped'
-//     },
-//     ondropdeactivate: function (event) {
-//         // remove active dropzone feedback
-//         event.target.classList.remove('drop-active')
-//         event.target.classList.remove('drop-target')
-//     }
-// })
 
 function DragDrop() {
 
@@ -166,8 +141,6 @@ function DragDrop() {
     //     },
     //     ]
     // );
-
-    // const [selectedAnswer, setSelectedAnswer] = useState('');
 
     return (
         <div className="taskContainer dragDropContainer">
@@ -257,14 +230,14 @@ function DragDrop() {
                         <div id="B" className="dropField_3"/>
                     </div>
                 </div>
-                <div className="buttonWrapper active" >
-                    <p className="continueLink unanswered" href="">
+                <div id="buttonInactive" className="buttonWrapper active unanswered" >
+                    <p className="continueLink" href="">
                         <span>Fertig?</span>
                         <span>Check it out.</span>
                     </p>
                 </div>
-                <div className="buttonWrapper inactive" >
-                    <a className="continueLink answered" href="">
+                <div id="buttionActive" className="buttonWrapper inactive answered" >
+                    <a className="continueLink" href="">
                         <span>Fertig?</span>
                         <span>Check it out.</span>
                     </a>

@@ -156,10 +156,11 @@
 .answered {
     opacity: 1;
     color: #1A222E;
+    background: #FFFFFF 0 0 no-repeat padding-box;
 }
 
 .buttonWrapper span {
-
+    margin-right: 30px;
 }
 
 .buttonWrapper span:nth-of-type(1) {

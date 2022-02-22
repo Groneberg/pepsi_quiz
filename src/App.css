@@ -4,7 +4,8 @@
 }
 
 body {
-  background: transparent radial-gradient(closest-side at 50% 50%, #32435A 0%, #020203 100%) 0 0 no-repeat padding-box;
+  background: transparent radial-gradient(closest-side at 50% 50%, #32435A 0%, #020210 100%) 0 0 no-repeat padding-box;
+  /*background: transparent radial-gradient(closest-side at 50% 50%, #32435A 0%, #020203 100%) 0 0 no-repeat padding-box;*/
   font-family: Montserrat, sans-serif;
   font-weight: 500;
 }
@@ -19,9 +20,11 @@ a {
 }
 
 .active {
-  visibility: visible;
+  /*visibility: visible;*/
+  display: flex;
 }
 
 .inactive {
-  visibility: hidden;
+  /*visibility: hidden;*/
+  display: none;
 }

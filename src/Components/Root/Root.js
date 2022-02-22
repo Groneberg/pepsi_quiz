@@ -11,6 +11,15 @@ function Root() {
             <li>
                 <a href="/quiz">Quiz</a>
             </li>
+            <li>
+                <a href="/ConfirmationNutri">ConfirmationNutri</a>
+            </li>
+            <li>
+            <a href="/ConfirmationQuiz">ConfirmationQuiz</a>
+            </li>
+            <li>
+            <a href="/ConfirmationScale">ConfirmationScale</a>
+            </li>
         </ul>
     );
 }

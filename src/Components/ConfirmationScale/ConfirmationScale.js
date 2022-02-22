@@ -14,6 +14,15 @@ function ConfirmationScale() {
                             <div className= "Subtitel">
                                 Es sind genau<br/>0g Zucker pro<br/>100ml!!
                             </div>
+                            <img className="firstImageScale"  src={img1} alt=""/>
+
+                            <svg class="Rechteck_129">
+                            		<rect id="Rechteck_129" rx="5" ry="5" x="0" y="0" width="331" height="122">
+                            		</rect>
+                            	</svg>
+                            <div className="sugarfree__Echt_lecker">
+                            		<span>sugarfree &amp;<br/>Echt lecker</span>
+                            	</div>
                         <p>
                             Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                             sed diam nonumy eirmod tempor invidunt ut labore et dolore

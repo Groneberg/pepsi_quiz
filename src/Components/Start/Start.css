@@ -58,6 +58,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #1A222E;
 }
 
 .startContinueLink span {

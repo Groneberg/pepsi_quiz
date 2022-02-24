@@ -1,0 +1,148 @@
+.contentWrapper {
+    display: flex;
+}
+
+.scaleContainer {
+    display: flex;
+    flex-direction: column;
+}
+.scaleQuestionWrapper {
+    color: rgba(255,255,255,1);
+    display: flex;
+    flex-direction: column;
+}
+
+.scaleQuestion {
+    margin: 100px 0 0 60px;
+    width: 585px;
+}
+
+.scaleQuestion p:nth-of-type(1) {
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.scaleQuestion p:nth-of-type(2) {
+    font-weight: normal;
+    font-size: 28px;
+    margin-top: 95px;
+    color: rgba(216,232,255,1);
+}
+
+.scaleAnswerWrapper {
+    margin: 70px 0 0 60px;
+    width: 540px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.scaleAnswerWrapper div {
+    width: 120px;
+    height: 120px;
+    box-shadow: 0 10px 10px #00000029;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.scaleAnswerWrapper div.answer {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.scaleAnswerWrapper div.answer:nth-of-type(4),
+.scaleAnswerWrapper div.answer:nth-of-type(5),
+.scaleAnswerWrapper div.answer:nth-of-type(6) {
+    margin-top: 30px;
+}
+
+.scaleAnswerWrapper div.unselected {
+    background: #F39228 0 0 no-repeat padding-box;
+}
+
+.scaleAnswerWrapper div.selected {
+    background: #FFFFFF 0 0 no-repeat padding-box;
+    color: #273446;
+}
+
+.scaleFieldWrapper {
+    height: 660px;
+    display: flex;
+    justify-content: space-between;
+    margin: 100px 0 0 60px;
+}
+
+.scaleField {
+    width: 800px;
+    height: 540px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.scaleField img {
+    width: 168px;
+    height: 524px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.scaleField .imageWrapper {
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scale {
+    width: 360px;
+    height: 540px;
+    margin: 0 0 0 135px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scaleFillerEllipse {
+    width: 287px;
+    height: 38px;
+    position: relative;
+    top: -10px;
+    left: 10px;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.imageWrapper .scaleFillerEllipse {
+    top: -35px;
+    left: 5px;
+}
+
+.scale .filler {
+    height: 510px;
+    width: 100px;
+    border: 2px solid rgba(255,255,255,0.23);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 10;
+    font-size: 32px;
+}
+
+.filling {
+    height: 56px;
+    width: 100px;
+    text-align: center;
+    background: #FFFFFF 0 0 no-repeat padding-box;
+    border: 2px solid #FFFFFF;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+
+

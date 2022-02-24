@@ -2,45 +2,53 @@
     display: flex;
 }
 
-.firstImage {
-
-}
-
-.secondImage {
-
-}
-
-.dragDropContainer {
+.confirmationNutriContainer {
     display: flex;
     flex-direction: column;
 }
-.dragDropQuestionWrapper {
+.confirmationNutriFeedbackWrapper {
     color: rgba(255,255,255,1);
     display: flex;
     flex-direction: column;
 }
 
-.dragDropQuestion {
+.confirmationNutriFeedback {
     margin: 100px 0 0 60px;
+    width: 850px;
+    font-size: 90px;
+    font-weight: bold;
+    line-height: 90px;
+    color: rgba(216,232,255,1);
+}
+
+.confirmationNutriFeedback p:nth-of-type(1) {
+    color: rgba(243,146,40,1);
+}
+.confirmationNutriFeedbackInfo {
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: normal;
+    margin-top: 100px;
     width: 540px;
 }
 
-.dragDropQuestion p:nth-of-type(1) {
-    font-weight: bold;
-    font-size: 50px;
-    color: rgba(243,146,40,1);
-}
-.Subtitel{
-    font-weight: bold;
-    font-size: 50px;
-}
+
 .firstImage {
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
     position: absolute;
-    width: 240px;
     height: 721px;
     left: 1317.614px;
     top: 100px;
+    width: 231.385px;
+    overflow: visible;
+}
+
+.secondImage {
+    position: absolute;
+    width: 241px;
+    height: 124px;
+    left: 1166px;
+    top: 556px;
     overflow: visible;
 }
 
@@ -64,61 +72,23 @@
     white-space: nowrap;
     line-height: 70px;
     margin-top: -7.5px;
-    text-align: left;
-    font-family: Montserrat;
-    font-style: normal;
     font-weight: bold;
     font-size: 55px;
     color: rgba(255,255,255,1);
 }
 
-.secondImage {
-    position: absolute;
-    width: 241px;
-    height: 124px;
-    left: 1166px;
-    top: 556px;
-    overflow: visible;
-}
-
-
-
-
-.dragDropQuestion p:nth-of-type(2) {
-    font-weight: normal;
-    font-size: 28px;
-    margin-top: 95px;
-    color: rgba(216,232,255,1);
-}
-
-.fieldWrapper {
-    height: 660px;
-    display: flex;
-    justify-content: space-between;
-    margin: 100px 0 0 60px;
-}
-
-.field .imageWrapper {
-    height: 300px;
-    display: flex;
-    align-items: center;
-}
-
-.imageWrapper svg {
+.confirmationNutriEllipse {
     position: absolute;
     overflow: visible;
-    width: 300px;
+    width: 506px;
     height: 38px;
+    left: 1103px;
+    top: 775px;
 }
 
-.imageWrapper ellipse {
+#confirmationNutriEllipse {
     opacity: 0.5;
     fill: rgba(0,0,0,1);
-}
-
-.Ellipse_1 {
-    left: 665px;
-    top: 556px;
 }
 
 .buttonWrapper .continueLink {

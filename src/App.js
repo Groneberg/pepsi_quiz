@@ -2,8 +2,10 @@ import './App.css';
 
 import Root from "./Components/Root/Root";
 import Start from "./Components/Start/Start";
-import DragDrop from "./Components/DragDrop/DragDrop";
+import Scale from "./Components/Scale/Scale";
 import Quiz from "./Components/Quiz/Quiz";
+import DragDrop from "./Components/DragDrop/DragDrop";
+
 import ConfirmationNutri from "./Components/ConfirmationNutri/ConfirmationNutri";
 import ConfirmationQuiz from "./Components/ConfirmationQuiz/ConfirmationQuiz";
 import ConfirmationScale from "./Components/ConfirmationScale/ConfirmationScale";
@@ -18,10 +20,12 @@ function App() {
         <Route path={'/'} element={<Root/> }/>
         <Route path="/start" element={<Start/>}/>
         <Route path="/dragDrop" element={<DragDrop/>}/>
+        <Route path="/scale" element={<Scale/>}/>
         <Route path="/quiz" element={<Quiz/>}/>
-        <Route path="/ConfirmationNutri" element={<ConfirmationNutri/>}/>
-        <Route path="/ConfirmationQuiz" element={<ConfirmationQuiz/>}/>
-        <Route path="/ConfirmationScale" element={<ConfirmationScale/>}/>
+
+        <Route path="/confirmationNutri" element={<ConfirmationNutri/>}/>
+        <Route path="/confirmationQuiz" element={<ConfirmationQuiz/>}/>
+        <Route path="/confirmationScale" element={<ConfirmationScale/>}/>
 
       </Routes>
 

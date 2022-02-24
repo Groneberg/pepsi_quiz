@@ -85,24 +85,6 @@ transform: matrix(1,0,0,1,926,530.5569) rotate(
     margin: 100px 0 0 60px;
 }
 
-.field .imageWrapper {
-    height: 300px;
-    display: flex;
-    align-items: center;
-}
-
-.imageWrapper svg {
-    position: absolute;
-    overflow: visible;
-    width: 287px;
-    height: 38px;
-}
-
-.imageWrapper ellipse {
-    opacity: 0.5;
-    fill: rgba(0,0,0,1);
-}
-
 .Ellipse_1 {
     left: 665px;
     top: 556px;

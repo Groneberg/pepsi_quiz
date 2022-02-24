@@ -47,18 +47,6 @@
     align-items: center;
 }
 
-.imageWrapper svg {
-    position: absolute;
-    overflow: visible;
-    width: 287px;
-    height: 38px;
-}
-
-.imageWrapper ellipse {
-    opacity: 0.5;
-    fill: rgba(0,0,0,1);
-}
-
 .Ellipse_1 {
     left: 665px;
     top: 556px;

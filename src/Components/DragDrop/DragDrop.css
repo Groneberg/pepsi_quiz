@@ -29,14 +29,14 @@
     color: rgba(216,232,255,1);
 }
 
-.answerWrapper {
-    margin: 70px 0 0 60px;
+.dragDropAnswerWrapper {
+    margin: 110px 0 0 60px;
     width: 480px;
     display: flex;
     justify-content: space-between;
 }
 
-.answerWrapper div {
+.dragDropAnswerWrapper div {
     width: 120px;
     height: 120px;
     box-shadow: 0 10px 10px #00000029;
@@ -47,31 +47,31 @@
     z-index: 20;
 }
 
-.answerWrapper div.answerD {
+.dragDropAnswerWrapper div.answerD {
     background: #F39228 0 0 no-repeat padding-box;
 }
 
-.answerWrapper div.answerB {
+.dragDropAnswerWrapper div.answerB {
     background: #95C12D 0 0 no-repeat padding-box;
 }
 
-.answerWrapper div.answerC {
+.dragDropAnswerWrapper div.answerC {
     background: #FFDF37 0 0 no-repeat padding-box;
 }
 
-.answerWrapper div span {
+.dragDropAnswerWrapper div span {
     font-weight: bold;
     font-size: 60px;
 }
 
-.fieldWrapper {
+.dragDropFieldWrapper {
     height: 660px;
     display: flex;
     justify-content: space-between;
     margin: 100px 0 0 60px;
 }
 
-.field {
+.dragDropFieldWrapper .field {
     width: 300px;
     height: 500px;
     display: flex;
@@ -80,7 +80,9 @@
     align-items: center;
 }
 
-.field .dropField_1, .field .dropField_2, .field .dropField_3 {
+.dragDropFieldWrapper .field .dropField_1,
+.dragDropFieldWrapper .field .dropField_2,
+.dragDropFieldWrapper .field .dropField_3 {
     width: 120px;
     height: 120px;
     border: 2px solid #FFFFFF;
@@ -88,26 +90,21 @@
     opacity: 0.23;
 }
 
-.field .imageWrapper {
+.dragDropFieldWrapper .field .imageWrapper {
     height: 300px;
     display: flex;
     align-items: center;
 }
 
-.field .imageWrapper img {
+.dragDropFieldWrapper .field .imageWrapper img {
     height: 300px;
 }
 
-.imageWrapper svg {
+.dragDropImageWrapper svg {
     position: absolute;
     overflow: visible;
     width: 287px;
     height: 38px;
-}
-
-.imageWrapper ellipse {
-    opacity: 0.5;
-    fill: rgba(0,0,0,1);
 }
 
 .Ellipse_1 {
@@ -125,48 +122,48 @@
     top: 556px;
 }
 
-.buttonWrapper {
-    position: absolute;
-    top: 900px;
-    left: 1574px;
-    width: 286px;
-    height: 120px;
-    box-shadow: 0 10px 10px #00000029;
-    border: 2px solid #38475C;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+/*.buttonWrapper {*/
+/*    position: absolute;*/
+/*    top: 900px;*/
+/*    left: 1574px;*/
+/*    width: 286px;*/
+/*    height: 120px;*/
+/*    box-shadow: 0 10px 10px #00000029;*/
+/*    border: 2px solid #38475C;*/
+/*    border-radius: 5px;*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*    align-items: center;*/
+/*}*/
 
-.buttonWrapper .continueLink {
-    width: 254px;
-    height: 92px;
-    text-align: right;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 28px;
-}
+/*.buttonWrapper .continueLink {*/
+/*    width: 254px;*/
+/*    height: 92px;*/
+/*    text-align: right;*/
+/*    font-style: normal;*/
+/*    font-weight: bold;*/
+/*    font-size: 28px;*/
+/*}*/
 
-.unanswered {
-    opacity: 0.281;
-    color: rgba(216,232,255,1);
-}
+/*.unanswered {*/
+/*    opacity: 0.281;*/
+/*    color: rgba(216,232,255,1);*/
+/*}*/
 
-.answered {
-    opacity: 1;
-    color: #1A222E;
-    background: #FFFFFF 0 0 no-repeat padding-box;
-}
+/*.answered {*/
+/*    opacity: 1;*/
+/*    color: #1A222E;*/
+/*    background: #FFFFFF 0 0 no-repeat padding-box;*/
+/*}*/
 
-.buttonWrapper span {
-    margin-right: 30px;
-}
+/*.buttonWrapper span {*/
+/*    margin-right: 30px;*/
+/*}*/
 
-.buttonWrapper span:nth-of-type(1) {
-    display: block;
-}
+/*.buttonWrapper span:nth-of-type(1) {*/
+/*    display: block;*/
+/*}*/
 
-.buttonWrapper span:nth-of-type(2) {
-    font-weight:normal;
-}
+/*.buttonWrapper span:nth-of-type(2) {*/
+/*    font-weight:normal;*/
+/*}*/

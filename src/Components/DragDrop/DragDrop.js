@@ -1,9 +1,7 @@
 import './DragDrop.css'
 import Header from "../Header/Header";
 
-import {useState} from "react";
 import interact from 'interactjs';
-
 
 import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/kisspng-fizzy-drinks-pepsi-max.png';
@@ -19,23 +17,25 @@ let droped_1 = false;
 let droped_2 = false;
 let droped_3 = false;
 
-function setAnswerElement(index, value ) {
+function setDragDropAnswerElement(index, value ) {
     answerArray[index] = (value === selectedAnswer);
 }
 
-function checkField() {
-    if (true) {
-    // if (droped_1 && droped_2 && droped_3) {
-        console.log('wuhuu all droped');
+const inactive = {
+    display: 'none',
+};
+
+const active = {
+    display: 'flex',
+};
+
+function dragDropCheckField() {
+    if (droped_1 && droped_2 && droped_3) {
         const buttonInactive = document.getElementById("buttonInactive");
         const buttionActive = document.getElementById("buttionActive");
-        buttonInactive.classList.add("inactive");
-        buttonInactive.classList.remove("active");
-        buttionActive.classList.add("active");
-        buttionActive.classList.remove("inactive");
+        buttonInactive.style.display = inactive.display;
+        buttionActive.style.display = active.display;
     }
-
-    return true;
 }
 
 interact('.draggable_B').draggable({
@@ -85,10 +85,10 @@ interact('.draggable_D').draggable({
 
 interact('.dropField_1').dropzone({
         ondrop: function (event) {
-            setAnswerElement(0, event.target.id);
+            setDragDropAnswerElement(0, event.target.id);
             localStorage.setItem('answerArray1', answerArray);
-            checkField();
             droped_1 = true;
+            dragDropCheckField();
             console.log(droped_1);
         }
     }).on('dropactivate', function (event) {
@@ -101,10 +101,10 @@ interact('.dropField_1').dropzone({
 
 interact('.dropField_2').dropzone({
         ondrop: function (event) {
-            setAnswerElement(1, event.target.id);
+            setDragDropAnswerElement(1, event.target.id);
             localStorage.setItem('answerArray1', answerArray);
-            checkField();
             droped_2 = true;
+            dragDropCheckField();
             console.log(droped_2);
         }
     }).on('dropactivate', function (event) {
@@ -117,10 +117,10 @@ interact('.dropField_2').dropzone({
 
 interact('.dropField_3').dropzone({
         ondrop: function (event) {
-            setAnswerElement(2, event.target.id);
+            setDragDropAnswerElement(2, event.target.id);
             localStorage.setItem('answerArray1', answerArray);
-            checkField();
             droped_3 = true;
+            dragDropCheckField();
             console.log(droped_3);
         }
     }).on('dropactivate', function (event) {
@@ -154,7 +154,7 @@ function DragDrop() {
                             Schnapp Dir den entsprechenden Score und ordne zu.
                         </p>
                     </div>
-                    <div className="answerWrapper">
+                    <div className="dragDropAnswerWrapper">
                         <div
                             className="answerD draggable_D"
                             onMouseEnter={() => {
@@ -198,9 +198,9 @@ function DragDrop() {
                         </div>
                     </div>
                 </div>
-                <div className="fieldWrapper">
+                <div className="dragDropFieldWrapper">
                     <div className="field">
-                        <div className="imageWrapper">
+                        <div className="dragDropImageWrapper">
                             <img src={img1} alt=""/>
                             <svg className="Ellipse_1">
                                 <ellipse id="Ellipse_1" rx="143.5" ry="19" cx="143.5" cy="19">
@@ -210,7 +210,7 @@ function DragDrop() {
                         <div id="C" className="dropField_1" />
                     </div>
                     <div className="field">
-                        <div className="imageWrapper">
+                        <div className="dragDropImageWrapper">
                             <img src={img2} alt=""/>
                             <svg className="Ellipse_2">
                                 <ellipse id="Ellipse_2" rx="143.5" ry="19" cx="143.5" cy="19">
@@ -220,7 +220,7 @@ function DragDrop() {
                         <div id="D" className="dropField_2" />
                     </div>
                     <div className="field">
-                        <div className="imageWrapper">
+                        <div className="dragDropImageWrapper">
                             <img src={img3} alt=""/>
                             <svg className="Ellipse_3">
                                 <ellipse id="Ellipse_3" rx="143.5" ry="19" cx="143.5" cy="19">
@@ -230,14 +230,14 @@ function DragDrop() {
                         <div id="B" className="dropField_3"/>
                     </div>
                 </div>
-                <div id="buttonInactive" className="buttonWrapper active unanswered" >
-                    <p className="continueLink" href="">
+                <div id="buttonInactive" className="buttonWrapper active unanswered" style={active}>
+                    <p className="continueLink">
                         <span>Fertig?</span>
                         <span>Check it out.</span>
                     </p>
                 </div>
-                <div id="buttionActive" className="buttonWrapper inactive answered" >
-                    <a className="continueLink" href="">
+                <div id="buttionActive" className="buttonWrapper answered" style={inactive}>
+                    <a className="continueLink" href="/confirmationNutri">
                         <span>Fertig?</span>
                         <span>Check it out.</span>
                     </a>

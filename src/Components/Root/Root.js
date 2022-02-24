@@ -9,16 +9,19 @@ function Root() {
                 <a href="/dragDrop">DragDrop</a>
             </li>
             <li>
+                <a href="/scale">Scale</a>
+            </li>
+            <li>
                 <a href="/quiz">Quiz</a>
             </li>
             <li>
-                <a href="/ConfirmationNutri">ConfirmationNutri</a>
+                <a href="/confirmationNutri">ConfirmationNutri</a>
             </li>
             <li>
-            <a href="/ConfirmationQuiz">ConfirmationQuiz</a>
+                <a href="/confirmationQuiz">ConfirmationQuiz</a>
             </li>
             <li>
-            <a href="/ConfirmationScale">ConfirmationScale</a>
+                <a href="/confirmationScale">ConfirmationScale</a>
             </li>
         </ul>
     );

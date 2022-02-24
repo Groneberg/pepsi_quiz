@@ -19,6 +19,7 @@ let droped_3 = false;
 
 function setDragDropAnswerElement(index, value ) {
     answerArray[index] = (value === selectedAnswer);
+    console.log(answerArray);
 }
 
 const inactive = {
@@ -32,9 +33,24 @@ const active = {
 function dragDropCheckField() {
     if (droped_1 && droped_2 && droped_3) {
         const buttonInactive = document.getElementById("buttonInactive");
-        const buttionActive = document.getElementById("buttionActive");
+        const buttonActive = document.getElementById("buttonActive");
         buttonInactive.style.display = inactive.display;
-        buttionActive.style.display = active.display;
+        buttonActive.style.display = active.display;
+    }
+    console.log(answerArray);
+}
+
+function checkNutriAnswer() {
+    console.log(answerArray);
+    for (let i = 0; i < answerArray.length; i++) {
+        if (answerArray[i] === false) {
+            localStorage.setItem('dragDropResult', 'false')
+            localStorage.setItem('pepsiPlacement', '1')
+            break;
+        } else {
+            localStorage.setItem('dragDropResult', 'true')
+            localStorage.setItem('pepsiPlacement', '2')
+        }
     }
 }
 
@@ -86,14 +102,15 @@ interact('.draggable_D').draggable({
 interact('.dropField_1').dropzone({
         ondrop: function (event) {
             setDragDropAnswerElement(0, event.target.id);
-            localStorage.setItem('answerArray1', answerArray);
+            localStorage.setItem('dragDropAnswerArray', answerArray);
             droped_1 = true;
             dragDropCheckField();
+            checkNutriAnswer();
             console.log(droped_1);
         }
     }).on('dropactivate', function (event) {
         event.target.classList.add('drop-activated');
-}).on('dragleave', function (event) {
+    }).on('dragleave', function (event) {
         console.log('dragleave');
         droped_1 = false;
         console.log(droped_1);
@@ -105,11 +122,12 @@ interact('.dropField_2').dropzone({
             localStorage.setItem('answerArray1', answerArray);
             droped_2 = true;
             dragDropCheckField();
+            checkNutriAnswer();
             console.log(droped_2);
         }
     }).on('dropactivate', function (event) {
         event.target.classList.add('drop-activated');
-}).on('dragleave', function (event) {
+    }).on('dragleave', function (event) {
         console.log('dragleave');
         droped_2 = false;
         console.log(droped_2);
@@ -121,6 +139,7 @@ interact('.dropField_3').dropzone({
             localStorage.setItem('answerArray1', answerArray);
             droped_3 = true;
             dragDropCheckField();
+            checkNutriAnswer();
             console.log(droped_3);
         }
     }).on('dropactivate', function (event) {
@@ -236,7 +255,7 @@ function DragDrop() {
                         <span>Check it out.</span>
                     </p>
                 </div>
-                <div id="buttionActive" className="buttonWrapper answered" style={inactive}>
+                <div id="buttonActive" className="buttonWrapper answered" style={inactive}>
                     <a className="continueLink" href="/confirmationNutri">
                         <span>Fertig?</span>
                         <span>Check it out.</span>

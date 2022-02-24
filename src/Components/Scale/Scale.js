@@ -8,7 +8,7 @@ import {useState} from "react";
 let selectedAnswer = '';
 let result = false;
 let answerSum = 0;
-const selectedAnswers = [false, false, false, false, false, false];
+const answersSelectedArray = [false, false, false, false, false, false];
 
 function setScaleAnswerElement() {
     result = (answerSum === selectedAnswer);
@@ -25,12 +25,12 @@ const active = {
 function scaleCheckField() {
     const buttonInactive = document.getElementById("buttonInactive");
     const buttonActive = document.getElementById("buttonActive");
-    if (selectedAnswers[0] ||
-        selectedAnswers[1] ||
-        selectedAnswers[2] ||
-        selectedAnswers[3] ||
-        selectedAnswers[4] ||
-        selectedAnswers[5]
+    if (answersSelectedArray[0] ||
+        answersSelectedArray[1] ||
+        answersSelectedArray[2] ||
+        answersSelectedArray[3] ||
+        answersSelectedArray[4] ||
+        answersSelectedArray[5]
     ) {
         buttonInactive.style.display = inactive.display;
         buttonActive.style.display = active.display;
@@ -54,7 +54,7 @@ function resetFilling() {
 
 function toggleSelection(index, value) {
     const answers = document.querySelectorAll('.answer');
-    if (selectedAnswers[index] === true) {
+    if (answersSelectedArray[index] === true) {
             answerSum = answerSum + value;
             answers[index].classList.add('selected');
             answers[index].classList.remove('unselected')
@@ -90,7 +90,7 @@ function Scale() {
                         <div
                             className="answer unselected"
                             onClick={() => {
-                                selectedAnswers[0] = !selectedAnswers[0];
+                                answersSelectedArray[0] = !answersSelectedArray[0];
                                 toggleSelection(0, 0);
                                 scaleCheckField();
                                 setScaleAnswerElement();
@@ -103,7 +103,7 @@ function Scale() {
                         <div
                             className="answer unselected"
                             onClick={() => {
-                                selectedAnswers[1] = !selectedAnswers[1];
+                                answersSelectedArray[1] = !answersSelectedArray[1];
                                 toggleSelection(1, 5);
                                 scaleCheckField();
                                 setScaleAnswerElement();
@@ -116,7 +116,7 @@ function Scale() {
                         <div
                             className="answer unselected"
                             onClick={() => {
-                                selectedAnswers[2] = !selectedAnswers[2];
+                                answersSelectedArray[2] = !answersSelectedArray[2];
                                 toggleSelection(2, 10);
                                 scaleCheckField();
                                 setScaleAnswerElement();
@@ -129,7 +129,7 @@ function Scale() {
                         <div
                             className="answer unselected"
                             onClick={() => {
-                                selectedAnswers[3] = !selectedAnswers[3];
+                                answersSelectedArray[3] = !answersSelectedArray[3];
                                 toggleSelection(3, 20);
                                 scaleCheckField();
                                 setScaleAnswerElement();
@@ -142,7 +142,7 @@ function Scale() {
                         <div
                             className="answer unselected"
                             onClick={() => {
-                                selectedAnswers[4] = !selectedAnswers[4];
+                                answersSelectedArray[4] = !answersSelectedArray[4];
                                 toggleSelection(4, 50);
                                 scaleCheckField();
                                 setScaleAnswerElement();
@@ -155,7 +155,7 @@ function Scale() {
                         <div
                             className="answer unselected"
                             onClick={() => {
-                                selectedAnswers[5] = !selectedAnswers[5];
+                                answersSelectedArray[5] = !answersSelectedArray[5];
                                 toggleSelection(5, 100);
                                 scaleCheckField();
                                 setScaleAnswerElement();

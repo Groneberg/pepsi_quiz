@@ -2,36 +2,9 @@
     display: flex;
 }
 
-.dragDropContainer {
-    display: flex;
-    flex-direction: column;
-}
-.dragDropQuestionWrapper {
-    color: rgba(255,255,255,1);
-    display: flex;
-    flex-direction: column;
-}
-
-.dragDropQuestion {
-    margin: 100px 0 0 60px;
-    width: 540px;
-}
-
-.dragDropQuestion p:nth-of-type(1) {
-    font-weight: bold;
-    font-size: 50px;
-    color: rgba(243,146,40,1);
-}
 .Subtitel{
     font-weight: bold;
     font-size: 50px;
-}
-
-.dragDropQuestion p:nth-of-type(2) {
-    font-weight: normal;
-    font-size: 28px;
-    margin-top: 95px;
-    color: rgba(216,232,255,1);
 }
 
 .fieldWrapper {

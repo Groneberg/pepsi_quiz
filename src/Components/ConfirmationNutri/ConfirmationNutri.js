@@ -2,18 +2,46 @@ import './ConfirmationNutri.css'
 import Header from "../Header/Header";
 import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/Bild_3.png';
+import {useState} from "react";
+
+function getListIndex() {
+    if (localStorage.getItem('dragDropResult') === 'true') {
+        return 0;
+    } else {
+        return 1;
+    }
+}
 
 function ConfirmationNutri() {
+    const dragDropResultIndex = getListIndex();
+    console.log(dragDropResultIndex);
+    const [resultTextList] = useState(
+        [
+            {
+            resultText: 'Du Pepsi-Profi,\n richtig!',
+            infoText: 'Pepsi Max hat \nNutriscore B!!',
+            },
+            {
+            resultText: 'Knapp aber nicht \nrichtig!',
+            infoText: 'Pepsi Max hat \nNutriscore B!!',
+            },
+        ]
+    );
+
+
     return (
         <div className="taskContainer confirmationNutriContainer">
             <Header/>
             <div className="contentWrapper">
                 <div className="confirmationNutriFeedbackWrapper" >
                     <div className="confirmationNutriFeedback">
-                        <p>Knapp aber nicht<br/>richtig!</p>
-                        <p>
-                            Pepsi Max hat<br/>Nutriscore B!!
-                        </p>
+
+                        <p>{resultTextList[dragDropResultIndex].resultText}</p>
+                        {/*<p>Knapp aber nicht<br/>richtig!</p>*/}
+
+                        <p>{resultTextList[dragDropResultIndex].infoText}</p>
+                        {/*<p>Pepsi Max hat<br/>Nutriscore B!!</p>*/}
+
                         <p className="confirmationNutriFeedbackInfo">
                             Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                             sed diam nonumy eirmod tempor invidunt ut labore et dolore

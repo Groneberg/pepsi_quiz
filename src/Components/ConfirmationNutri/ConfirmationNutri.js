@@ -4,7 +4,7 @@ import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/Bild_3.png';
 import {useState} from "react";
 
-function getListIndex() {
+function getNutriListIndex() {
     if (localStorage.getItem('dragDropResult') === 'true') {
         return 0;
     } else {
@@ -13,7 +13,7 @@ function getListIndex() {
 }
 
 function ConfirmationNutri() {
-    const dragDropResultIndex = getListIndex();
+    const dragDropResultIndex = getNutriListIndex();
     console.log(dragDropResultIndex);
     const [resultTextList] = useState(
         [
@@ -30,19 +30,14 @@ function ConfirmationNutri() {
 
 
     return (
-        <div className="taskContainer confirmationNutriContainer">
+        <div className="taskContainer confirmationContainer">
             <Header/>
             <div className="contentWrapper">
-                <div className="confirmationNutriFeedbackWrapper" >
-                    <div className="confirmationNutriFeedback">
-
+                <div className="confirmationFeedbackWrapper" >
+                    <div className="confirmationFeedback">
                         <p>{resultTextList[dragDropResultIndex].resultText}</p>
-                        {/*<p>Knapp aber nicht<br/>richtig!</p>*/}
-
                         <p>{resultTextList[dragDropResultIndex].infoText}</p>
-                        {/*<p>Pepsi Max hat<br/>Nutriscore B!!</p>*/}
-
-                        <p className="confirmationNutriFeedbackInfo">
+                        <p className="confirmationFeedbackInfo">
                             Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                             sed diam nonumy eirmod tempor invidunt ut labore et dolore
                             magna aliquyam et accusam et justo duo dolores et ea

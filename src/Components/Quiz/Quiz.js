@@ -4,14 +4,12 @@ import Header from "../Header/Header";
 import img1 from '../../img/Bild_2.png';
 
 import {useState} from "react";
+import {getQuestionStage} from "../../tools/function";
 
 let selectedAnswer = '';
 let focusedArray = [false, false, false, false];
+let userAnswer = '';
 let result = false;
-
-// function setQuizAnswerElement() {
-//     result = (answerSum === selectedAnswer);
-// }
 
 const inactive = {
     display: 'none',
@@ -31,7 +29,19 @@ function quizCheckField() {
         buttonInactive.style.display = active.display;
         buttonActive.style.display = inactive.display;
     }
-    console.log(selectedAnswer);
+}
+
+function checkQuizAnswer() {
+    result = (`${userAnswer}%` === selectedAnswer);
+}
+
+function setQuizAnswerElement() {
+    console.log(result);
+    if (result === false) {
+        localStorage.setItem('quizResult', 'false')
+    }  else {
+        localStorage.setItem('quizResult', 'true')
+    }
 }
 
 function resetFocus() {
@@ -64,12 +74,33 @@ function Quiz() {
     const [questionList /*setEventList*/] = useState(
         [{
             productIMG: '',
-            answer: '0g',
+            questionText: 'Wie viel Prozent \nunserer Getränke \nin Deutschland \nsind sugarfree?',
+            answer: '50%',
+            answerChoices: {
+                choice1: 50,
+                choice2: 20,
+                choice3: 5,
+                choice4: 1
+            }
+        },
+        {
+            productIMG: '',
+            questionText: 'Wie viel Prozent \nunserer Produkte \nsind zuckerreduziert \noder zuckerfrei',
+            answer: '70%',
+            answerChoices: {
+                choice1: 10,
+                choice2: 30,
+                choice3: 70,
+                choice4: 50
+            }
         },
         ]
     );
     // todo questions
-    selectedAnswer = questionList[0].answer;
+    let stage = getQuestionStage();
+    console.log(`stage = ${stage}`);
+
+    selectedAnswer = questionList[stage].answer;
 
     return (
         <div className="taskContainer quizContainer">
@@ -77,70 +108,85 @@ function Quiz() {
             <div className="contentWrapper">
                 <div className="quizQuestionWrapper" >
                     <div className="quizQuestion">
-                        <p>Wie viel Prozent unserer Getränke in Deutschland sind sugarfree?</p>
+                        <p>{questionList[stage].questionText}</p>
                         <p>Was meinst Du? Tippe auf die Schätzung Deiner Wahl.</p>
                     </div>
                     <div className="quizAnswerWrapper">
                         <div
                             className="answer unselected"
+                            // onMouseDown={() => {
+                            // }}
                             onClick={() => {
                                 if (focusedArray[0] !== true) {
                                     setFocus(0);
-                                    selectedAnswer = 50;
+                                    userAnswer = questionList[stage].answerChoices.choice1;
+                                    checkQuizAnswer();
+                                    setQuizAnswerElement();
                                 } else {
                                     resetFocus();
-                                    selectedAnswer = '';
+                                    userAnswer = '';
                                 }
                                 quizCheckField();
                             }}
                         >
-                            <span>50%</span>
+                            <span>{questionList[stage].answerChoices.choice1}%</span>
                         </div>
                         <div
                             className="answer unselected"
+                            // onMouseDown={() => {
+                            // }}
                             onClick={() => {
                                 if (focusedArray[1] !== true) {
                                     setFocus(1);
-                                    selectedAnswer = 20;
+                                    userAnswer = questionList[stage].answerChoices.choice2;
+                                    checkQuizAnswer();
+                                    setQuizAnswerElement();
                                 } else {
                                     resetFocus();
-                                    selectedAnswer = '';
+                                    userAnswer = '';
                                 }
                                 quizCheckField();
                             }}
                         >
-                            <span>20%</span>
+                            <span>{questionList[stage].answerChoices.choice2}%</span>
                         </div>
                         <div
                             className="answer unselected"
+                            // onMouseDown={() => {
+                            // }}
                             onClick={() => {
                                 if (focusedArray[2] !== true) {
                                     setFocus(2);
-                                    selectedAnswer = 5;
+                                    userAnswer = questionList[stage].answerChoices.choice3;
+                                    checkQuizAnswer();
+                                    setQuizAnswerElement();
                                 } else {
                                     resetFocus();
-                                    selectedAnswer = '';
+                                    userAnswer = '';
                                 }
-
                                 quizCheckField();
                             }}
                         >
-                            <span>5%</span>
+                            <span>{questionList[stage].answerChoices.choice3}%</span>
                         </div>
                         <div
                             className="answer unselected"
+                            onMouseDown={() => {
+                            }}
                             onClick={() => {
                                 if (focusedArray[3] !== true) {
                                     setFocus(3);
-                                    selectedAnswer = 1;
+                                    userAnswer = questionList[stage].answerChoices.choice4;
+                                    checkQuizAnswer();
+                                    setQuizAnswerElement();
                                 } else {
                                     resetFocus();
-                                    selectedAnswer = '';
+                                    userAnswer = '';
                                 }
                                 quizCheckField();
                             }}
                         >
-                            <span>1%</span>
+                            <span>{questionList[stage].answerChoices.choice4}%</span>
                         </div>
                     </div>
                 </div>

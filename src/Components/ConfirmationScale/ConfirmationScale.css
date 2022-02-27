@@ -2,11 +2,6 @@
     display: flex;
 }
 
-.Subtitel{
-    font-weight: bold;
-    font-size: 50px;
-}
-
 .fieldWrapper {
     height: 660px;
     display: flex;
@@ -25,37 +20,6 @@
     top: 556px;
 }
 
-.buttonWrapper .continueLink {
-    width: 254px;
-    height: 92px;
-    text-align: right;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 28px;
-}
-
-.unanswered {
-    opacity: 0.281;
-    color: rgba(216,232,255,1);
-}
-
-.answered {
-    opacity: 1;
-    color: #1A222E;
-}
-
-.buttonWrapper span {
-
-}
-
-.buttonWrapper span:nth-of-type(1) {
-    display: block;
-}
-
-.buttonWrapper span:nth-of-type(2) {
-    font-weight:normal;
-}
-
 .firstImageScale {
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
     position: absolute;
@@ -67,13 +31,13 @@
 }
 
 .Rechteck_129 {
-position: absolute;
+    position: absolute;
     overflow: visible;
     width: 331px;
     height: 122px;
     left: 1129px;
     top: 519.376px;
-fill: rgba(255,255,255,1);
+    fill: rgba(255,255,255,1);
     stroke: rgba(255,255,255,1);
     stroke-width: 2px;
     stroke-linejoin: miter;
@@ -87,12 +51,9 @@ fill: rgba(255,255,255,1);
       top: 525.376px;
       position: absolute;
       overflow: visible;
-      width: 851px;
-      height: 461.2470703125px;
-      text-align: left;
-      font-family: Montserrat;
-      font-style: normal;
+      width: 320px;
+      height: 120px;
       font-weight: bold;
       font-size: 50px;
       color: rgba(27,36,49,1);
-  }
+}

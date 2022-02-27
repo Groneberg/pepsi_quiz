@@ -1,11 +1,11 @@
 import './DragDrop.css'
 import Header from "../Header/Header";
-
 import interact from 'interactjs';
-
+import {useState} from "react";
 import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/kisspng-fizzy-drinks-pepsi-max.png';
 import img3 from '../../img/NoPath_-_Kopie.png';
+import {getQuestionStage, initApp} from '../../tools/function';
 
 const position_B = { x: 0, y: 0 };
 const position_C = { x: 0, y: 0 };
@@ -16,11 +16,6 @@ let answerArray = [false,false,false];
 let droped_1 = false;
 let droped_2 = false;
 let droped_3 = false;
-
-function setDragDropAnswerElement(index, value ) {
-    answerArray[index] = (value === selectedAnswer);
-    console.log(answerArray);
-}
 
 const inactive = {
     display: 'none',
@@ -37,19 +32,20 @@ function dragDropCheckField() {
         buttonInactive.style.display = inactive.display;
         buttonActive.style.display = active.display;
     }
-    console.log(answerArray);
+    console.log('answerArray =' + answerArray);
 }
 
-function checkNutriAnswer() {
-    console.log(answerArray);
+function checkNutriAnswer(index, value ) {
+    answerArray[index] = (value === selectedAnswer);
+}
+
+function setDragDropAnswerElement() {
     for (let i = 0; i < answerArray.length; i++) {
         if (answerArray[i] === false) {
-            localStorage.setItem('dragDropResult', 'false')
-            localStorage.setItem('pepsiPlacement', '1')
+            localStorage.setItem('dragDropResult', 'false');
             break;
         } else {
-            localStorage.setItem('dragDropResult', 'true')
-            localStorage.setItem('pepsiPlacement', '2')
+            localStorage.setItem('dragDropResult', 'true');
         }
     }
 }
@@ -101,11 +97,11 @@ interact('.draggable_D').draggable({
 
 interact('.dropField_1').dropzone({
         ondrop: function (event) {
-            setDragDropAnswerElement(0, event.target.id);
+            checkNutriAnswer(0, event.target.id);
             localStorage.setItem('dragDropAnswerArray', answerArray);
             droped_1 = true;
             dragDropCheckField();
-            checkNutriAnswer();
+            setDragDropAnswerElement();
             console.log(droped_1);
         }
     }).on('dropactivate', function (event) {
@@ -118,11 +114,11 @@ interact('.dropField_1').dropzone({
 
 interact('.dropField_2').dropzone({
         ondrop: function (event) {
-            setDragDropAnswerElement(1, event.target.id);
+            checkNutriAnswer(1, event.target.id);
             localStorage.setItem('answerArray1', answerArray);
             droped_2 = true;
             dragDropCheckField();
-            checkNutriAnswer();
+            setDragDropAnswerElement();
             console.log(droped_2);
         }
     }).on('dropactivate', function (event) {
@@ -135,11 +131,11 @@ interact('.dropField_2').dropzone({
 
 interact('.dropField_3').dropzone({
         ondrop: function (event) {
-            setDragDropAnswerElement(2, event.target.id);
+            checkNutriAnswer(2, event.target.id);
             localStorage.setItem('answerArray1', answerArray);
             droped_3 = true;
             dragDropCheckField();
-            checkNutriAnswer();
+            setDragDropAnswerElement();
             console.log(droped_3);
         }
     }).on('dropactivate', function (event) {
@@ -152,14 +148,22 @@ interact('.dropField_3').dropzone({
 
 
 function DragDrop() {
-
-    // const [questionList /*setEventList*/] = useState(
-    //     [{
-    //         productIMG: '',
-    //         nutriScore: 'D',
-    //     },
-    //     ]
-    // );
+    const [questionList /*setEventList*/] = useState(
+        [{
+            productIMG: '',
+            nutriScore1: 'D',
+            nutriScore2: 'B',
+            nutriScore3: 'C',
+        },
+        ]
+    );
+    //todo
+    initApp();
+    if (localStorage.getItem('stage') === null) {
+        initApp();
+    }
+    let stage = getQuestionStage();
+    console.log(`stage = ${stage}`);
 
     return (
         <div className="taskContainer dragDropContainer">
@@ -176,12 +180,12 @@ function DragDrop() {
                     <div className="dragDropAnswerWrapper">
                         <div
                             className="answerD draggable_D"
-                            onMouseEnter={() => {
-                                selectedAnswer = 'D';
+                            onMouseDown={() => {
+                                selectedAnswer = questionList[stage].nutriScore1;
                                 console.log(selectedAnswer);
                             }}
                             onClick={() => {
-                                selectedAnswer = 'D';
+                                selectedAnswer = questionList[stage].nutriScore1;
                                 console.log(selectedAnswer);
                             }}
                         >
@@ -189,13 +193,13 @@ function DragDrop() {
                         </div>
                         <div
                             className="answerB draggable_B"
-                            onMouseEnter={() => {
-                                selectedAnswer = 'B';
+                            onMouseDown={() => {
+                                selectedAnswer = questionList[stage].nutriScore2;
                                 console.log(selectedAnswer);
 
                             }}
                             onClick={() => {
-                                selectedAnswer = 'B';
+                                selectedAnswer = questionList[stage].nutriScore2;
                                 console.log(selectedAnswer);
                             }}
                         >
@@ -203,13 +207,13 @@ function DragDrop() {
                         </div>
                         <div
                             className="answerC draggable_C"
-                            onMouseEnter={() => {
-                                selectedAnswer = 'C';
+                            onMouseDown={() => {
+                                selectedAnswer = questionList[stage].nutriScore3;
                                 console.log(selectedAnswer);
 
                             }}
                             onClick={() => {
-                                selectedAnswer = 'C';
+                                selectedAnswer = questionList[stage].nutriScore3;
                                 console.log(selectedAnswer);
                             }}
                         >

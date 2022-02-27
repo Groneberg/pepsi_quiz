@@ -2,36 +2,35 @@
     display: flex;
 }
 
-.confirmationNutriContainer {
-    display: flex;
-    flex-direction: column;
-}
-.confirmationNutriFeedbackWrapper {
-    color: rgba(255,255,255,1);
-    display: flex;
-    flex-direction: column;
-}
+/*.confirmationContainer {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.confirmationFeedbackWrapper {*/
+/*    color: rgba(255,255,255,1);*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
-.confirmationNutriFeedback {
-    margin: 100px 0 0 60px;
-    width: 850px;
-    font-size: 90px;
-    font-weight: bold;
-    line-height: 90px;
-    color: rgba(216,232,255,1);
-}
+/*.confirmationFeedback {*/
+/*    margin: 100px 0 0 60px;*/
+/*    width: 850px;*/
+/*    font-size: 90px;*/
+/*    font-weight: bold;*/
+/*    line-height: 90px;*/
+/*    color: rgba(216,232,255,1);*/
+/*}*/
 
-.confirmationNutriFeedback p:nth-of-type(1) {
-    color: rgba(243,146,40,1);
-}
-.confirmationNutriFeedbackInfo {
-    font-size: 28px;
-    line-height: 34px;
-    font-weight: normal;
-    margin-top: 100px;
-    width: 540px;
-}
-
+/*.confirmationFeedback p:nth-of-type(1) {*/
+/*    color: rgba(243,146,40,1);*/
+/*}*/
+/*.confirmationFeedbackInfo {*/
+/*    font-size: 28px;*/
+/*    line-height: 34px;*/
+/*    font-weight: normal;*/
+/*    margin-top: 100px;*/
+/*    width: 540px;*/
+/*}*/
 
 .firstImage {
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
@@ -105,14 +104,3 @@
     color: #1A222E;
 }
 
-.buttonWrapper span {
-
-}
-
-.buttonWrapper span:nth-of-type(1) {
-    display: block;
-}
-
-.buttonWrapper span:nth-of-type(2) {
-    font-weight:normal;
-}

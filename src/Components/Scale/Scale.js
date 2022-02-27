@@ -1,18 +1,13 @@
 import './Scale.css'
 import Header from "../Header/Header";
-
 import img1 from '../../img/Bild_2.png';
-
 import {useState} from "react";
+import {getQuestionStage} from '../../tools/function';
 
 let selectedAnswer = '';
 let result = false;
 let answerSum = 0;
 const answersSelectedArray = [false, false, false, false, false, false];
-
-function setScaleAnswerElement() {
-    result = (answerSum === selectedAnswer);
-}
 
 const inactive = {
     display: 'none',
@@ -37,6 +32,20 @@ function scaleCheckField() {
     } else {
         buttonInactive.style.display = active.display;
         buttonActive.style.display = inactive.display;
+    }
+}
+
+function checkScaleAnswer() {
+    result = (`${answerSum}g` === selectedAnswer);
+    console.log(`${answerSum}g` === selectedAnswer);
+}
+
+function setScaleAnswerElement() {
+    console.log(result);
+    if (result === false) {
+        localStorage.setItem('scaleResult', 'false')
+    }  else {
+        localStorage.setItem('scaleResult', 'true')
     }
 }
 
@@ -75,7 +84,11 @@ function Scale() {
         ]
     );
     // todo questions
-    selectedAnswer = questionList[0].answer;
+
+    let stage = getQuestionStage();
+    console.log(`stage = ${stage}`);
+
+    selectedAnswer = questionList[stage].answer;
 
     return (
         <div className="taskContainer scaleContainer">
@@ -93,9 +106,10 @@ function Scale() {
                                 answersSelectedArray[0] = !answersSelectedArray[0];
                                 toggleSelection(0, 0);
                                 scaleCheckField();
-                                setScaleAnswerElement();
+                                checkScaleAnswer();
                                 resetFilling();
                                 setScaleFilling();
+                                setScaleAnswerElement();
                             }}
                         >
                             <span>0g</span>
@@ -106,9 +120,10 @@ function Scale() {
                                 answersSelectedArray[1] = !answersSelectedArray[1];
                                 toggleSelection(1, 5);
                                 scaleCheckField();
-                                setScaleAnswerElement();
+                                checkScaleAnswer();
                                 resetFilling();
                                 setScaleFilling();
+                                setScaleAnswerElement();
                             }}
                         >
                                 <span>5g</span>
@@ -119,9 +134,10 @@ function Scale() {
                                 answersSelectedArray[2] = !answersSelectedArray[2];
                                 toggleSelection(2, 10);
                                 scaleCheckField();
-                                setScaleAnswerElement();
+                                checkScaleAnswer();
                                 resetFilling();
                                 setScaleFilling();
+                                setScaleAnswerElement();
                             }}
                         >
                                 <span>10g</span>
@@ -132,9 +148,10 @@ function Scale() {
                                 answersSelectedArray[3] = !answersSelectedArray[3];
                                 toggleSelection(3, 20);
                                 scaleCheckField();
-                                setScaleAnswerElement();
+                                checkScaleAnswer();
                                 resetFilling();
                                 setScaleFilling();
+                                setScaleAnswerElement();
                             }}
                         >
                                 <span>20g</span>
@@ -145,9 +162,10 @@ function Scale() {
                                 answersSelectedArray[4] = !answersSelectedArray[4];
                                 toggleSelection(4, 50);
                                 scaleCheckField();
-                                setScaleAnswerElement();
+                                checkScaleAnswer();
                                 resetFilling();
                                 setScaleFilling();
+                                setScaleAnswerElement();
                             }}
                         >
                             <span>50g</span>
@@ -158,9 +176,10 @@ function Scale() {
                                 answersSelectedArray[5] = !answersSelectedArray[5];
                                 toggleSelection(5, 100);
                                 scaleCheckField();
-                                setScaleAnswerElement();
+                                checkScaleAnswer();
                                 resetFilling();
                                 setScaleFilling();
+                                setScaleAnswerElement();
                             }}
                         >
                             <span>100g</span>

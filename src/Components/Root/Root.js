@@ -23,6 +23,9 @@ function Root() {
             <li>
                 <a href="/confirmationScale">ConfirmationScale</a>
             </li>
+            <li>
+                <a href="/end">EndScreen</a>
+            </li>
         </ul>
     );
 }

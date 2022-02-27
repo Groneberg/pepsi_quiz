@@ -11,6 +11,7 @@ import ConfirmationQuiz from "./Components/ConfirmationQuiz/ConfirmationQuiz";
 import ConfirmationScale from "./Components/ConfirmationScale/ConfirmationScale";
 
 import {/*Switch, Link,*/ Route, Routes} from "react-router-dom";
+import EndScreen from "./Components/EndScreen/EndScreen";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/confirmationNutri" element={<ConfirmationNutri/>}/>
         <Route path="/confirmationQuiz" element={<ConfirmationQuiz/>}/>
         <Route path="/confirmationScale" element={<ConfirmationScale/>}/>
+        <Route path="/end" element={<EndScreen/>}/>
 
       </Routes>
 

@@ -121,3 +121,7 @@
     left: 1271px;
     top: 556px;
 }
+
+.dropGlow {
+    opacity: 1 !important;
+}

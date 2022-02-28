@@ -1,7 +1,7 @@
 import './DragDrop.css'
 import Header from "../Header/Header";
 import interact from 'interactjs';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/kisspng-fizzy-drinks-pepsi-max.png';
 import img3 from '../../img/NoPath_-_Kopie.png';
@@ -16,6 +16,8 @@ let answerArray = [false,false,false];
 let droped_1 = false;
 let droped_2 = false;
 let droped_3 = false;
+let dropRectArray;
+let dragRectArray;
 
 const inactive = {
     display: 'none',
@@ -50,6 +52,48 @@ function setDragDropAnswerElement() {
     }
 }
 
+function getFieldRect(selector) {
+    const fields = document.querySelectorAll(selector);
+    const array = [];
+    for (let i = 0; i < fields.length; i++) {
+        array.push(fields[i].getBoundingClientRect());
+    }
+    return array;
+}
+
+function collisionDetection(dragRectArray, dropRectArray) {
+    dragRectArray = getFieldRect('.drag');
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (
+                ((dragRectArray[i].top > dropRectArray[j].top && dragRectArray[i].top < dropRectArray[j].bottom)
+                    ||
+                    (dragRectArray[i].bottom > dropRectArray[j].top && dragRectArray[i].bottom < dropRectArray[j].bottom))
+                &&
+                ((dragRectArray[i].right < dropRectArray[j].right && dragRectArray[0].right > dropRectArray[j].left)
+                    ||
+                    (dragRectArray[i].left < dropRectArray[j].right && dragRectArray[i].left > dropRectArray[j].left))
+            ) {
+                return true;
+            }
+        }
+    }
+}
+
+// function setBorder(bool, selector, index) {
+//     const fields = document.querySelectorAll(selector);
+//     if (bool === true && fields[index].classList.value === 'dropField_3 noGlow') {
+//         fields[index].classList.add('dropGlow');
+//         fields[index].classList.remove('noGlow');
+//         console.log(fields[index].classList);
+//     } else if (fields[index].classList.value === 'dropField_3 dropGlow') {
+//         fields[index].classList.add('noGlow');
+//         fields[index].classList.remove('dropGlow');
+//         console.log(fields[index].classList);
+//     }
+// }
+
 interact('.draggable_B').draggable({
     listeners: {
         start (event) {
@@ -61,6 +105,8 @@ interact('.draggable_B').draggable({
 
             event.target.style.transform =
                 `translate(${position_B.x}px, ${position_B.y}px)`;
+            console.log(collisionDetection(dragRectArray, dropRectArray));
+            // setBorder(collisionDetection(dragRectArray, dropRectArray), '.noGlow', 0);
         },
     }
 });
@@ -76,6 +122,8 @@ interact('.draggable_C').draggable({
 
             event.target.style.transform =
                 `translate(${position_C.x}px, ${position_C.y}px)`;
+            console.log(collisionDetection(dragRectArray, dropRectArray));
+            // setBorder(collisionDetection(dragRectArray, dropRectArray), '.noGlow', 1);
         },
     }
 });
@@ -87,10 +135,12 @@ interact('.draggable_D').draggable({
         },
         move (event) {
             position_D.x += event.dx;
-            position_D.y += event.dy;
 
+            position_D.y += event.dy;
             event.target.style.transform =
                 `translate(${position_D.x}px, ${position_D.y}px)`;
+            console.log(collisionDetection(dragRectArray, dropRectArray));
+            // setBorder(collisionDetection(dragRectArray, dropRectArray), '.noGlow', 2);
         },
     }
 });
@@ -105,7 +155,9 @@ interact('.dropField_1').dropzone({
             console.log(droped_1);
         }
     }).on('dropactivate', function (event) {
-        event.target.classList.add('drop-activated');
+        const rect = event.target.getBoundingClientRect();
+        console.log(rect.top, rect.right, rect.bottom, rect.left);
+        // document.getElementById(event.target.id).classList.add('dropGlow');
     }).on('dragleave', function (event) {
         console.log('dragleave');
         droped_1 = false;
@@ -122,7 +174,8 @@ interact('.dropField_2').dropzone({
             console.log(droped_2);
         }
     }).on('dropactivate', function (event) {
-        event.target.classList.add('drop-activated');
+        const rect = event.target.getBoundingClientRect();
+        // document.getElementById(event.target.id).classList.add('dropGlow');
     }).on('dragleave', function (event) {
         console.log('dragleave');
         droped_2 = false;
@@ -139,7 +192,9 @@ interact('.dropField_3').dropzone({
             console.log(droped_3);
         }
     }).on('dropactivate', function (event) {
-        event.target.classList.add('drop-activated')
+        const rect = event.target.getBoundingClientRect();
+        console.log(rect.top, rect.right, rect.bottom, rect.left);
+        // document.getElementById(event.target.id).classList.add('dropGlow');
     }).on('dragleave', function (event) {
         console.log('dragleave');
         droped_3 = false;
@@ -157,6 +212,14 @@ function DragDrop() {
         },
         ]
     );
+
+    useEffect(() => {
+        dropRectArray = getFieldRect('.noGlow');
+        dragRectArray = getFieldRect('.drag');
+        console.log(dropRectArray);
+        console.log(dragRectArray);
+    });
+
     //todo
     initApp();
     if (localStorage.getItem('stage') === null) {
@@ -179,7 +242,7 @@ function DragDrop() {
                     </div>
                     <div className="dragDropAnswerWrapper">
                         <div
-                            className="answerD draggable_D"
+                            className="answerD draggable_D drag"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore1;
                                 console.log(selectedAnswer);
@@ -192,7 +255,7 @@ function DragDrop() {
                                 <span>D</span>
                         </div>
                         <div
-                            className="answerB draggable_B"
+                            className="answerB draggable_B drag"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore2;
                                 console.log(selectedAnswer);
@@ -206,7 +269,7 @@ function DragDrop() {
                                 <span>B</span>
                         </div>
                         <div
-                            className="answerC draggable_C"
+                            className="answerC draggable_C drag"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore3;
                                 console.log(selectedAnswer);
@@ -230,7 +293,10 @@ function DragDrop() {
                                 </ellipse>
                             </svg>
                         </div>
-                        <div id="C" className="dropField_1" />
+                        <div
+                            id="C"
+                            className="dropField_1 noGlow"
+                        />
                     </div>
                     <div className="field">
                         <div className="dragDropImageWrapper">
@@ -240,7 +306,10 @@ function DragDrop() {
                                 </ellipse>
                             </svg>
                         </div>
-                        <div id="D" className="dropField_2" />
+                        <div
+                            id="D"
+                            className="dropField_2 noGlow"
+                        />
                     </div>
                     <div className="field">
                         <div className="dragDropImageWrapper">
@@ -250,7 +319,10 @@ function DragDrop() {
                                 </ellipse>
                             </svg>
                         </div>
-                        <div id="B" className="dropField_3"/>
+                        <div
+                            id="B"
+                            className="dropField_3 noGlow"
+                        />
                     </div>
                 </div>
                 <div id="buttonInactive" className="buttonWrapper active unanswered" style={active}>

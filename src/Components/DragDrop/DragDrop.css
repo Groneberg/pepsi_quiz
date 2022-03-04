@@ -135,3 +135,22 @@
     top: 280px;
     overflow: visible;
 }
+
+.Bild_21 {
+    position: absolute;
+    width: 85px;
+    height: 298px;
+    left: 1071px;
+    top: 280px;
+    overflow: visible;
+}
+
+.Bild_22{
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    width: 312px;
+    height: 312px;
+    left: 1260px;
+    top: 283px;
+    overflow: visible;
+}

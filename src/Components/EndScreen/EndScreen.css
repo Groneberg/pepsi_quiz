@@ -78,17 +78,17 @@
     position: absolute;
     width: 340px;
     height: 1000px;
-    left: 1022px;
-    top: 60px;
+    left: 985px;
+    top: 45px;
     overflow: visible;
 }
 
 .secondImageQuiz {
-position: absolute;
-    width: 186px;
+    position: absolute;
+    width: 742px;
     height: 742px;
-    left: 1314px;
-    top: 287px;
+    left: 990px;
+    top: 315px;
     overflow: visible;
 }
 

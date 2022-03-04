@@ -17,7 +17,7 @@ let droped_1 = false;
 let droped_2 = false;
 let droped_3 = false;
 let dropRectArray;
-let dragRectArray;
+let fields;
 
 const inactive = {
     display: 'none',
@@ -52,7 +52,7 @@ function setDragDropAnswerElement() {
     }
 }
 
-function getFieldRect(selector) {
+function getFieldArrayRect(selector) {
     const fields = document.querySelectorAll(selector);
     const array = [];
     for (let i = 0; i < fields.length; i++) {
@@ -61,38 +61,57 @@ function getFieldRect(selector) {
     return array;
 }
 
-function collisionDetection(dragRectArray, dropRectArray) {
-    dragRectArray = getFieldRect('.drag');
+function getFieldRect(selector) {
+    return document.querySelector(selector).getBoundingClientRect();
+}
+
+function collisionDetection(selector, dropRectArray) {
+    let dragRect = getFieldRect(selector);
 
     for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            if (
-                ((dragRectArray[i].top > dropRectArray[j].top && dragRectArray[i].top < dropRectArray[j].bottom)
-                    ||
-                    (dragRectArray[i].bottom > dropRectArray[j].top && dragRectArray[i].bottom < dropRectArray[j].bottom))
-                &&
-                ((dragRectArray[i].right < dropRectArray[j].right && dragRectArray[0].right > dropRectArray[j].left)
-                    ||
-                    (dragRectArray[i].left < dropRectArray[j].right && dragRectArray[i].left > dropRectArray[j].left))
-            ) {
-                return true;
+        if (
+            ((dragRect.top > dropRectArray[i].top && dragRect.top < dropRectArray[i].bottom)
+                ||
+                (dragRect.bottom > dropRectArray[i].top && dragRect.bottom < dropRectArray[i].bottom))
+            &&
+            ((dragRect.right < dropRectArray[i].right && dragRect.right > dropRectArray[i].left)
+                ||
+                (dragRect.left < dropRectArray[i].right && dragRect.left > dropRectArray[i].left))
+        ) {
+            fields[i].classList.add('dropGlow');
+        } else {
+            fields[i].classList.remove('dropGlow');
+            if (droped_1) {
+                fields[0].classList.add('dropGlow');
+            }
+            if (droped_2) {
+                fields[1].classList.add('dropGlow');
+            }
+            if (droped_3) {
+                fields[2].classList.add('dropGlow');
+            }
+            if (droped_1 && droped_2 && droped_3) {
+                fields[i].classList.add('dropGlow');
             }
         }
     }
 }
 
-// function setBorder(bool, selector, index) {
-//     const fields = document.querySelectorAll(selector);
-//     if (bool === true && fields[index].classList.value === 'dropField_3 noGlow') {
-//         fields[index].classList.add('dropGlow');
-//         fields[index].classList.remove('noGlow');
-//         console.log(fields[index].classList);
-//     } else if (fields[index].classList.value === 'dropField_3 dropGlow') {
-//         fields[index].classList.add('noGlow');
-//         fields[index].classList.remove('dropGlow');
-//         console.log(fields[index].classList);
-//     }
-// }
+interact('.draggable_D').draggable({
+    listeners: {
+        start (event) {
+            // console.log(event.type, event.target);
+        },
+        move (event) {
+            position_D.x += event.dx;
+
+            position_D.y += event.dy;
+            event.target.style.transform =
+                `translate(${position_D.x}px, ${position_D.y}px)`;
+            collisionDetection('.drag1', dropRectArray);
+        },
+    }
+});
 
 interact('.draggable_B').draggable({
     listeners: {
@@ -105,8 +124,7 @@ interact('.draggable_B').draggable({
 
             event.target.style.transform =
                 `translate(${position_B.x}px, ${position_B.y}px)`;
-            console.log(collisionDetection(dragRectArray, dropRectArray));
-            // setBorder(collisionDetection(dragRectArray, dropRectArray), '.noGlow', 0);
+            collisionDetection('.drag2', dropRectArray);
         },
     }
 });
@@ -122,25 +140,7 @@ interact('.draggable_C').draggable({
 
             event.target.style.transform =
                 `translate(${position_C.x}px, ${position_C.y}px)`;
-            console.log(collisionDetection(dragRectArray, dropRectArray));
-            // setBorder(collisionDetection(dragRectArray, dropRectArray), '.noGlow', 1);
-        },
-    }
-});
-
-interact('.draggable_D').draggable({
-    listeners: {
-        start (event) {
-            // console.log(event.type, event.target);
-        },
-        move (event) {
-            position_D.x += event.dx;
-
-            position_D.y += event.dy;
-            event.target.style.transform =
-                `translate(${position_D.x}px, ${position_D.y}px)`;
-            console.log(collisionDetection(dragRectArray, dropRectArray));
-            // setBorder(collisionDetection(dragRectArray, dropRectArray), '.noGlow', 2);
+            collisionDetection('.drag3', dropRectArray);
         },
     }
 });
@@ -152,16 +152,14 @@ interact('.dropField_1').dropzone({
             droped_1 = true;
             dragDropCheckField();
             setDragDropAnswerElement();
-            console.log(droped_1);
+            console.log(`droped_1 = ${droped_1}`);
         }
     }).on('dropactivate', function (event) {
-        const rect = event.target.getBoundingClientRect();
-        console.log(rect.top, rect.right, rect.bottom, rect.left);
-        // document.getElementById(event.target.id).classList.add('dropGlow');
+
     }).on('dragleave', function (event) {
         console.log('dragleave');
         droped_1 = false;
-        console.log(droped_1);
+        console.log(`droped_1 = ${droped_1}`);
 });
 
 interact('.dropField_2').dropzone({
@@ -171,15 +169,14 @@ interact('.dropField_2').dropzone({
             droped_2 = true;
             dragDropCheckField();
             setDragDropAnswerElement();
-            console.log(droped_2);
+            console.log(`droped_2 = ${droped_2}`);
         }
     }).on('dropactivate', function (event) {
-        const rect = event.target.getBoundingClientRect();
-        // document.getElementById(event.target.id).classList.add('dropGlow');
+
     }).on('dragleave', function (event) {
         console.log('dragleave');
         droped_2 = false;
-        console.log(droped_2);
+        console.log(`droped_2 = ${droped_2}`);
 });
 
 interact('.dropField_3').dropzone({
@@ -189,16 +186,14 @@ interact('.dropField_3').dropzone({
             droped_3 = true;
             dragDropCheckField();
             setDragDropAnswerElement();
-            console.log(droped_3);
+            console.log(`droped_3 = ${droped_3}`);
         }
     }).on('dropactivate', function (event) {
-        const rect = event.target.getBoundingClientRect();
-        console.log(rect.top, rect.right, rect.bottom, rect.left);
-        // document.getElementById(event.target.id).classList.add('dropGlow');
+
     }).on('dragleave', function (event) {
         console.log('dragleave');
         droped_3 = false;
-        console.log(droped_3);
+        console.log(`droped_3 = ${droped_3}`);
 });
 
 
@@ -214,10 +209,8 @@ function DragDrop() {
     );
 
     useEffect(() => {
-        dropRectArray = getFieldRect('.noGlow');
-        dragRectArray = getFieldRect('.drag');
-        console.log(dropRectArray);
-        console.log(dragRectArray);
+        dropRectArray = getFieldArrayRect('.drop');
+        fields = document.querySelectorAll('.drop');
     });
 
     //todo
@@ -242,42 +235,45 @@ function DragDrop() {
                     </div>
                     <div className="dragDropAnswerWrapper">
                         <div
-                            className="answerD draggable_D drag"
+                            className="answerD draggable_D drag1 beforeDragAnimation"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore1;
                                 console.log(selectedAnswer);
                             }}
-                            onClick={() => {
+                            onClick={(event) => {
                                 selectedAnswer = questionList[stage].nutriScore1;
                                 console.log(selectedAnswer);
+                                event.target.classList.remove('beforeDragAnimation');
                             }}
                         >
                                 <span>D</span>
                         </div>
                         <div
-                            className="answerB draggable_B drag"
+                            className="answerB draggable_B drag2 beforeDragAnimation"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore2;
                                 console.log(selectedAnswer);
 
                             }}
-                            onClick={() => {
+                            onClick={(event) => {
                                 selectedAnswer = questionList[stage].nutriScore2;
                                 console.log(selectedAnswer);
+                                event.target.classList.remove('beforeDragAnimation');
                             }}
                         >
                                 <span>B</span>
                         </div>
                         <div
-                            className="answerC draggable_C drag"
+                            className="answerC draggable_C drag3 beforeDragAnimation"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore3;
                                 console.log(selectedAnswer);
 
                             }}
-                            onClick={() => {
+                            onClick={(event) => {
                                 selectedAnswer = questionList[stage].nutriScore3;
                                 console.log(selectedAnswer);
+                                event.target.classList.remove('beforeDragAnimation');
                             }}
                         >
                                 <span>C</span>
@@ -295,7 +291,7 @@ function DragDrop() {
                         </div>
                         <div
                             id="C"
-                            className="dropField_1 noGlow"
+                            className="dropField_1 noGlow1 drop"
                         />
                     </div>
                     <div className="field">
@@ -308,7 +304,7 @@ function DragDrop() {
                         </div>
                         <div
                             id="D"
-                            className="dropField_2 noGlow"
+                            className="dropField_2 noGlow2 drop"
                         />
                     </div>
                     <div className="field">
@@ -321,7 +317,7 @@ function DragDrop() {
                         </div>
                         <div
                             id="B"
-                            className="dropField_3 noGlow"
+                            className="dropField_3 noGlow3 drop"
                         />
                     </div>
                 </div>

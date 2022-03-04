@@ -287,7 +287,7 @@ function DragDrop() {
                 <div className="dragDropFieldWrapper">
                     <div className="field">
                         <div className="dragDropImageWrapper">
-                            <img src={img1} alt=""/>
+                            <img className= "Bild_2 "src={img1} alt=""/>
                             <svg className="Ellipse_1">
                                 <ellipse id="Ellipse_1" rx="143.5" ry="19" cx="143.5" cy="19">
                                 </ellipse>

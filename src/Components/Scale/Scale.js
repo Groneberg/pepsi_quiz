@@ -196,12 +196,11 @@ function Scale() {
                                 <ellipse id="Ellipse_1" rx="143.5" ry="19" cx="143.5" cy="19" />
                             </svg>
                         </div>
-                        <div className="imageWrapper">
-                            <img src={img1} alt=""/>
-                            <svg className="scaleFillerEllipse">
-                                <ellipse id="Ellipse_2" rx="143.5" ry="19" cx="143.5" cy="19"/>
+                            <img className= "Bild_44" src={img1} alt=""/>
+                            <svg class="Ellipse_44">
+                            <ellipse id="Ellipse_3" rx="143.5" ry="19" cx="143.5" cy="19">
+                            </ellipse>
                             </svg>
-                        </div>
                     </div>
                 </div>
                 <div id="buttonInactive" className="buttonWrapper active unanswered" style={active}>

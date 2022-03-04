@@ -49,6 +49,10 @@ function ConfirmationScale() {
                     <div className="sugarfree__Echt_lecker">
                         <span>sugarfree &amp;<br/>Echt lecker</span>
                     </div>
+                    <svg class="confirmationNutriEllipse">
+                    <ellipse id="confirmationNutriEllipse" rx="253" ry="19" cx="253" cy="19">
+                    </ellipse>
+                    </svg>
                 </div>
             </div>
             <div className="buttonWrapper continueLink answered" >

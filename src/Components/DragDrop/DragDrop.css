@@ -125,3 +125,13 @@
 .dropGlow {
     opacity: 1 !important;
 }
+
+.Bild_2 {
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    width: 96.056px;
+    height: 301px;
+    left: 760.473px;
+    top: 280px;
+    overflow: visible;
+}

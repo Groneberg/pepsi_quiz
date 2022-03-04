@@ -191,13 +191,12 @@ function Quiz() {
                     </div>
                 </div>
                 <div className="quizFieldWrapper">
-                    <div className="quizField">
                         <div className="imageWrapper">
-                            <img src={img1} alt=""/>
-                            <svg className="quizEllipse">
-                                <ellipse id="quizEllipse" rx="224.5" ry="19" cx="224.5" cy="19"/>
+                            <img className= "Bild_50 "src={img1} alt=""/>
+                            <svg className="Ellipse_54">
+                            		<ellipse id="Ellipse_54" rx="224.5" ry="19" cx="224.5" cy="19">
+                            		</ellipse>
                             </svg>
-                        </div>
                     </div>
                 </div>
                 <div id="buttonInactive" className="buttonWrapper active unanswered" style={active}>

@@ -72,23 +72,22 @@
     font-size: 28px;
 }
 
-
 .firstImageQuiz {
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
     position: absolute;
     width: 340px;
     height: 1000px;
-    left: 1022px;
-    top: 32px;
+    left: 985px;
+    top: 45px;
     overflow: visible;
 }
 
 .secondImageQuiz {
-position: absolute;
-    width: 700px;
+    position: absolute;
+    width: 742px;
     height: 742px;
-    left: 1050px;
-    top: 325px;
+    left: 990px;
+    top: 315px;
     overflow: visible;
 }
 

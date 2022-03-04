@@ -146,3 +146,23 @@
 
 
 
+.Bild_44 {
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    width: 168.384px;
+    height: 524px;
+    left: 1380.615px;
+    top: 267px;
+    overflow: visible;
+}
+
+.Ellipse_44 {
+    position: absolute;
+    overflow: visible;
+    width: 287px;
+    height: 38px;
+    left: 1320px;
+    top: 774px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}

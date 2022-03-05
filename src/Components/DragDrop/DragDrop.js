@@ -4,7 +4,10 @@ import interact from 'interactjs';
 import {useEffect, useState} from "react";
 import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/kisspng-fizzy-drinks-pepsi-max.png';
-import img3 from '../../img/NoPath_-_Kopie.png';
+import img3 from '../../img/lipton.png';
+import img4 from '../../img/schwipschwap.png';
+import img5 from '../../img/NoPath_-_Kopie.png';
+import img6 from '../../img/lays.png';
 import {getQuestionStage, initApp} from '../../tools/function';
 
 const position_B = { x: 0, y: 0 };
@@ -196,14 +199,33 @@ interact('.dropField_3').dropzone({
         console.log(`droped_3 = ${droped_3}`);
 });
 
-
 function DragDrop() {
     const [questionList /*setEventList*/] = useState(
         [{
-            productIMG: '',
+            productIMG1: img1,
+            productIMG2: img2,
+            productIMG3: img3,
             nutriScore1: 'D',
             nutriScore2: 'B',
             nutriScore3: 'C',
+            answerNutri1: 'B',
+            answerNutri2: 'D',
+            answerNutri3: 'C',
+            questionText: 'Kennst Du den Nutri Score der folgenden Produkte?',
+            infoText: 'Welches Pepsi-Produkt hat Deiner Meinung nach den Nutri Score B verdient, welches hat C und D? \nSchnapp Dir den entsprechenden Score und ordne zu.'
+        },
+        {
+            productIMG1: img4,
+            productIMG2: img5,
+            productIMG3: img6,
+            nutriScore1: 'D',
+            nutriScore2: 'B',
+            nutriScore3: 'C',
+            answerNutri1: 'C',
+            answerNutri2: 'B',
+            answerNutri3: 'D',
+            questionText: 'Kennst Du den Nutri Score der folgenden Produkte?',
+            infoText: 'Welches Pepsi-Produkt hat Deiner Meinung nach den Nutri Score B verdient, welches hat C und D? \nSchnapp Dir den entsprechenden Score und ordne zu.'
         },
         ]
     );
@@ -218,7 +240,9 @@ function DragDrop() {
     if (localStorage.getItem('stage') === null) {
         initApp();
     }
-    let stage = getQuestionStage();
+    //todo stage
+    // let stage = getQuestionStage();
+    let stage = 1;
     console.log(`stage = ${stage}`);
 
     return (
@@ -227,11 +251,8 @@ function DragDrop() {
             <div className="contentWrapper">
                 <div className="dragDropQuestionWrapper" >
                     <div className="dragDropQuestion">
-                        <p>Kennst Du <br/>den Nutri Score <br/>der folgenden Produkte?</p>
-                        <p>
-                            Welche Pepsi-Produkt hat Deiner Meinung nach den Nutri Score B verdient, welches hat C und D?
-                            Schnapp Dir den entsprechenden Score und ordne zu.
-                        </p>
+                        <p>{questionList[stage].questionText}</p>
+                        <p>{questionList[stage].infoText}</p>
                     </div>
                     <div className="dragDropAnswerWrapper">
                         <div
@@ -283,40 +304,40 @@ function DragDrop() {
                 <div className="dragDropFieldWrapper">
                     <div className="field">
                         <div className="dragDropImageWrapper">
-                            <img className= "Bild_2" src={img1} alt=""/>
+                            <img src={questionList[stage].productIMG1} alt=""/>
                             <svg className="Ellipse_1">
                                 <ellipse id="Ellipse_1" rx="143.5" ry="19" cx="143.5" cy="19">
                                 </ellipse>
                             </svg>
                         </div>
                         <div
-                            id="C"
+                            id={questionList[stage].answerNutri1}
                             className="dropField_1 noGlow1 drop"
                         />
                     </div>
                     <div className="field">
                         <div className="dragDropImageWrapper">
-                            <img className= "Bild_21" src={img2} alt=""/>
+                            <img src={questionList[stage].productIMG2} alt=""/>
                             <svg className="Ellipse_2">
                                 <ellipse id="Ellipse_2" rx="143.5" ry="19" cx="143.5" cy="19">
                                 </ellipse>
                             </svg>
                         </div>
                         <div
-                            id="D"
+                            id={questionList[stage].answerNutri2}
                             className="dropField_2 noGlow2 drop"
                         />
                     </div>
                     <div className="field">
                         <div className="dragDropImageWrapper">
-                            <img className= "Bild_22" src={img3} alt=""/>
+                            <img src={questionList[stage].productIMG3} alt=""/>
                             <svg className="Ellipse_3">
                                 <ellipse id="Ellipse_3" rx="143.5" ry="19" cx="143.5" cy="19">
                                 </ellipse>
                             </svg>
                         </div>
                         <div
-                            id="B"
+                            id={questionList[stage].answerNutri3}
                             className="dropField_3 noGlow3 drop"
                         />
                     </div>

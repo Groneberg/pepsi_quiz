@@ -4,6 +4,7 @@ import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/7Up.png';
 import img3 from '../../img/sugarfree.png';
 import {useState} from "react";
+import {getQuestionStage} from '../../tools/function';
 
 function getQuizListIndex() {
     if (localStorage.getItem('quizResult') === 'true') {
@@ -11,24 +12,66 @@ function getQuizListIndex() {
     } else {
         return 1;
     }
-
 }
+
+// function getQuizFeedbackInfo(stage) {
+//     if (stage === 0) {
+//         return (
+//
+//         );
+//     } else if (stage === 1) {
+//         return (
+//
+//         );
+//     } else {
+//         return (
+//
+//         );
+//     }
+// }
 
 function ConfirmationQuiz() {
     const quizResultIndex = getQuizListIndex();
     console.log(quizResultIndex);
     const [resultTextList] = useState(
-        [
-            {
-                resultText: 'Volltreffer!',
-                infoText: 'Bereits die Hälfte \nunserer Getränke \nin Deutschland ist \nzuckerfrei.',
-            },
-            {
-                resultText: 'Richtig falsch!',
-                infoText: 'Bereits die Hälfte \nunserer Getränke \nin Deutschland ist \nzuckerfrei.',
-            },
+[
+            [
+                {
+                    resultText: 'Volltreffer!',
+                    infoText: 'Bereits die Hälfte \nunserer Getränke \nin Deutschland ist \nzuckerfrei.',
+                },
+                {
+                    resultText: 'Richtig falsch!',
+                    infoText: 'Bereits die Hälfte \nunserer Getränke \nin Deutschland ist \nzuckerfrei.',
+                },
+            ],
+            [
+                {
+                    resultText: 'Volltreffer!',
+                    infoText: 'Insgesamt sind etwa 70% \nunseres Portfolios \nzucker-reduziert oder zuckerfrei.',
+                },
+                {
+                    resultText: 'Richtig falsch!',
+                    infoText: 'Insgesamt sind etwa 70% \nunseres Portfolios \nzucker-reduziert oder zuckerfrei.',
+                },
+            ],
+            [
+                {
+                    resultText: 'Volltreffer!',
+                    infoText: 'Bereits die Hälfte \nunserer Getränke \nin Deutschland ist \nzucker-frei.',
+                },
+                {
+                    resultText: 'Richtig falsch!',
+                    infoText: 'Bereits die Hälfte \nunserer Getränke \nin Deutschland ist \nzucker-frei.',
+                },
+            ],
         ]
     );
+
+    //todo stage
+    let stage = getQuestionStage();
+    // let stage = 1;
+    console.log(`stage = ${stage}`);
 
     return (
         <div className="taskContainer confirmationContainer">
@@ -36,11 +79,11 @@ function ConfirmationQuiz() {
             <div className="contentWrapper">
                 <div className="confirmationFeedbackWrapper" >
                     <div className="confirmationFeedback smaller">
-                        <p>{resultTextList[quizResultIndex].resultText}</p>
-                        <p>{resultTextList[quizResultIndex].infoText}</p>
+                        <p>{resultTextList[stage][quizResultIndex].resultText}</p>
+                        <p>{resultTextList[stage][quizResultIndex].infoText}</p>
                     </div>
                     <div className="quizFeedbackImageWrapper">
-                        <img className="secondImageQuiz"  src={img2} alt=""/>
+                        <img className="secondImageQuiz2"  src={img2} alt=""/>
                         <img className="firstImageQuiz"  src={img1} alt=""/>
                         <svg className="feedbackEllipse">
                             <ellipse id="feedbackEllipse" rx="297" ry="19" cx="297" cy="19">
@@ -57,7 +100,7 @@ function ConfirmationQuiz() {
                     </div>
                     <p className="quizEndInfo">
                         Du hast es geschafft!<br/>
-                        Hole dir deine Pepsi ab!
+                        Hole Dir Deine Pepsi ab!
                     </p>
             </div>
                 <div className="buttonWrapper continueLink answered quizEndButton" >

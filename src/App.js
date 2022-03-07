@@ -18,8 +18,8 @@ function App() {
   return (
 
       <Routes>
-        <Route path={'/'} element={<Root/> }/>
-        <Route path="/start" element={<Start/>}/>
+        <Route path={'/'} element={<Start/>}/>
+        <Route path="/root" element={<Root/>}/>
         <Route path="/dragDrop" element={<DragDrop/>}/>
         <Route path="/scale" element={<Scale/>}/>
         <Route path="/quiz" element={<Quiz/>}/>

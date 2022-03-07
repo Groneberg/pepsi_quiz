@@ -1,7 +1,3 @@
-.contentWrapper {
-    display: flex;
-}
-
 .dragDropContainer {
     display: flex;
     flex-direction: column;
@@ -101,8 +97,6 @@
 }
 
 .dragDropImageWrapper svg {
-    position: absolute;
-    overflow: visible;
     width: 287px;
     height: 38px;
 }

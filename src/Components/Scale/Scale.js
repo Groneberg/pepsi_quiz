@@ -1,6 +1,8 @@
 import './Scale.css'
 import Header from "../Header/Header";
 import img1 from '../../img/Bild_2.png';
+import img2 from '../../img/pepsi100rPET.png';
+import img3 from '../../img/doritos.png';
 import {useState} from "react";
 import {getQuestionStage} from '../../tools/function';
 
@@ -35,9 +37,9 @@ function scaleCheckField() {
     }
 }
 
-function checkScaleAnswer() {
-    result = (`${answerSum}g` === selectedAnswer);
-    console.log(`${answerSum}g` === selectedAnswer);
+function checkScaleAnswer(unit) {
+    result = (`${answerSum}${unit}` === selectedAnswer);
+    console.log(`${answerSum}${unit}` === selectedAnswer);
 }
 
 function setScaleAnswerElement() {
@@ -49,16 +51,20 @@ function setScaleAnswerElement() {
     }
 }
 
-function setScaleFilling() {
+function setScaleFilling(unit, factor) {
     const filling = document.getElementById('fillingID');
-    filling.style.height = `${filling.offsetHeight + answerSum}px`;
-    filling.innerHTML = `${answerSum}g`;
+    if (answerSum !== 0) {
+        filling.style.height = `${(filling.offsetHeight + answerSum) * factor}px`;
+    } else {
+        filling.style.height = `${filling.offsetHeight + answerSum}px`;
+    }
+    filling.innerHTML = `${answerSum} ${unit}`;
 }
 
-function resetFilling() {
+function resetFilling(unit) {
     const filling = document.getElementById('fillingID');
     filling.style.height = '56px';
-    filling.innerHTML = '0g';
+    filling.innerHTML = `0 ${unit}`;
 }
 
 function toggleSelection(index, value) {
@@ -78,14 +84,50 @@ function Scale() {
 
     const [questionList /*setEventList*/] = useState(
         [{
-            productIMG: '',
+            productIMG: img1,
+            imageClass: 'image1',
             answer: '0g',
+            possibilities: [0,5,10,20,50,100],
+            unit: 'g',
+            multiplicationFactor: 1,
+            questionText: 'Schätz mal! \nWie viel Zucker ist in der Pepsi Max?',
+            infoText: 'Setze die Grammzahl an Zucker für die Waage zusammen.',
+            pTagClass: 'questionText1',
+            answerSpan: 'answerSpan1',
+            fillerSpan: 'fillerSpan1',
+        },
+        {
+            productIMG: img2,
+            imageClass: 'image2',
+            answer: '12Mio.',
+            possibilities: [1,2,5,10,20,50],
+            unit: 'Mio.',
+            multiplicationFactor: 3,
+            questionText: 'In Deutschland sparen wir 15.000 Tonnen Neuplastik ein. Kennst Du das Äquivalent hierzu?',
+            infoText: 'Alle Getränkeflaschen bestehen aus recyceltem Material. Setze die Anzahl an Legosteinen zusammen, die dem Entspricht.',
+            pTagClass: 'questionText2',
+            answerSpan: 'answerSpan2',
+            fillerSpan: 'fillerSpan2',
+        },
+        {
+            productIMG: img3,
+            imageClass: 'image3',
+            answer: '23g',
+            possibilities: [1,2,5,10,20,50],
+            unit: 'g',
+            multiplicationFactor: 3,
+            questionText: 'Was glaubst Du, \nwie viel Fett in den \nDoritos Dippers Lightly Salted \nenthalten ist? Schätz mal!',
+            infoText: 'Platzhalter',
+            pTagClass: 'questionText3',
+            answerSpan: 'answerSpan3',
+            fillerSpan: 'fillerSpan3',
         },
         ]
     );
-    // todo questions
 
+    //todo stage
     let stage = getQuestionStage();
+    // let stage = 2;
     console.log(`stage = ${stage}`);
 
     selectedAnswer = questionList[stage].answer;
@@ -96,93 +138,105 @@ function Scale() {
             <div className="contentWrapper">
                 <div className="scaleQuestionWrapper" >
                     <div className="scaleQuestion">
-                        <p>Schätz mal!<br/>Wie viel Zucker ist in der Pepsi Max?</p>
-                        <p>Gib die Grammzahl an Zucker  für die Waage genau an.</p>
+                        <p className={questionList[stage].pTagClass}>{questionList[stage].questionText}</p>
+                        <p className={questionList[stage].pTagClass}>{questionList[stage].infoText}</p>
                     </div>
                     <div className="scaleAnswerWrapper">
                         <div
                             className="answer unselected"
                             onClick={() => {
                                 answersSelectedArray[0] = !answersSelectedArray[0];
-                                toggleSelection(0, 0);
+                                toggleSelection(0, questionList[stage].possibilities[0]);
                                 scaleCheckField();
-                                checkScaleAnswer();
-                                resetFilling();
-                                setScaleFilling();
+                                checkScaleAnswer(questionList[stage].unit);
+                                resetFilling(questionList[stage].unit);
+                                setScaleFilling(questionList[stage].unit, questionList[stage].multiplicationFactor);
                                 setScaleAnswerElement();
                             }}
                         >
-                            <span>0g</span>
+                            <span
+                                className={questionList[stage].answerSpan}
+                            >{`${questionList[stage].possibilities[0]} ${questionList[stage].unit}`}</span>
                         </div>
                         <div
                             className="answer unselected"
                             onClick={() => {
                                 answersSelectedArray[1] = !answersSelectedArray[1];
-                                toggleSelection(1, 5);
+                                toggleSelection(1, questionList[stage].possibilities[1]);
                                 scaleCheckField();
-                                checkScaleAnswer();
-                                resetFilling();
-                                setScaleFilling();
+                                checkScaleAnswer(questionList[stage].unit);
+                                resetFilling(questionList[stage].unit);
+                                setScaleFilling(questionList[stage].unit, questionList[stage].multiplicationFactor);
                                 setScaleAnswerElement();
                             }}
                         >
-                                <span>5g</span>
+                            <span
+                                className={questionList[stage].answerSpan}
+                            >{`${questionList[stage].possibilities[1]} ${questionList[stage].unit}`}</span>
                         </div>
                         <div
                             className="answer unselected"
                             onClick={() => {
                                 answersSelectedArray[2] = !answersSelectedArray[2];
-                                toggleSelection(2, 10);
+                                toggleSelection(2, questionList[stage].possibilities[2]);
                                 scaleCheckField();
-                                checkScaleAnswer();
-                                resetFilling();
-                                setScaleFilling();
+                                checkScaleAnswer(questionList[stage].unit);
+                                resetFilling(questionList[stage].unit);
+                                setScaleFilling(questionList[stage].unit, questionList[stage].multiplicationFactor);
                                 setScaleAnswerElement();
                             }}
                         >
-                                <span>10g</span>
+                            <span
+                                className={questionList[stage].answerSpan}
+                            >{`${questionList[stage].possibilities[2]} ${questionList[stage].unit}`}</span>
                         </div>
                         <div
                             className="answer unselected"
                             onClick={() => {
                                 answersSelectedArray[3] = !answersSelectedArray[3];
-                                toggleSelection(3, 20);
+                                toggleSelection(3, questionList[stage].possibilities[3]);
                                 scaleCheckField();
-                                checkScaleAnswer();
-                                resetFilling();
-                                setScaleFilling();
+                                checkScaleAnswer(questionList[stage].unit);
+                                resetFilling(questionList[stage].unit);
+                                setScaleFilling(questionList[stage].unit, questionList[stage].multiplicationFactor);
                                 setScaleAnswerElement();
                             }}
                         >
-                                <span>20g</span>
+                            <span
+                                className={questionList[stage].answerSpan}
+                            >{`${questionList[stage].possibilities[3]} ${questionList[stage].unit}`}</span>
                         </div>
                         <div
                             className="answer unselected"
                             onClick={() => {
                                 answersSelectedArray[4] = !answersSelectedArray[4];
-                                toggleSelection(4, 50);
+                                toggleSelection(4, questionList[stage].possibilities[4]);
                                 scaleCheckField();
-                                checkScaleAnswer();
-                                resetFilling();
-                                setScaleFilling();
+                                checkScaleAnswer(questionList[stage].unit);
+                                resetFilling(questionList[stage].unit);
+                                setScaleFilling(questionList[stage].unit, questionList[stage].multiplicationFactor);
                                 setScaleAnswerElement();
                             }}
                         >
-                            <span>50g</span>
+                            <span
+                                className={questionList[stage].answerSpan}
+                            >{`${questionList[stage].possibilities[4]} ${questionList[stage].unit}`}</span>
                         </div>
                         <div
                             className="answer unselected"
                             onClick={() => {
                                 answersSelectedArray[5] = !answersSelectedArray[5];
-                                toggleSelection(5, 100);
+                                toggleSelection(5, questionList[stage].possibilities[5]);
                                 scaleCheckField();
-                                checkScaleAnswer();
-                                resetFilling();
-                                setScaleFilling();
+                                checkScaleAnswer(questionList[stage].unit);
+                                resetFilling(questionList[stage].unit);
+                                setScaleFilling(questionList[stage].unit, questionList[stage].multiplicationFactor);
                                 setScaleAnswerElement();
                             }}
                         >
-                            <span>100g</span>
+                            <span
+                                className={questionList[stage].answerSpan}
+                            >{`${questionList[stage].possibilities[5]} ${questionList[stage].unit}`}</span>
                         </div>
                     </div>
                 </div>
@@ -190,17 +244,18 @@ function Scale() {
                     <div className="scaleField">
                         <div className="scale">
                             <div className="filler">
-                                <span id="fillingID" className="filling">0g</span>
+                                <span id="fillingID" className="filling">{`0 ${questionList[stage].unit}`}</span>
                             </div>
                             <svg className="scaleFillerEllipse">
                                 <ellipse id="Ellipse_1" rx="143.5" ry="19" cx="143.5" cy="19" />
                             </svg>
                         </div>
-                            <img className= "Bild_44" src={img1} alt=""/>
-                            <svg class="Ellipse_44">
-                            <ellipse id="Ellipse_3" rx="143.5" ry="19" cx="143.5" cy="19">
-                            </ellipse>
+                        <div className="imageWrapper">
+                            <img className={questionList[stage].imageClass} src={questionList[stage].productIMG} alt=""/>
+                            <svg className="Ellipse_44">
+                                <ellipse id="Ellipse_3" rx="143.5" ry="19" cx="143.5" cy="19"/>
                             </svg>
+                        </div>
                     </div>
                 </div>
                 <div id="buttonInactive" className="buttonWrapper active unanswered" style={active}>

@@ -1,8 +1,7 @@
 import './Quiz.css'
 import Header from "../Header/Header";
-
 import img1 from '../../img/Bild_2.png';
-
+import img2 from '../../img/collection.png';
 import {useState} from "react";
 import {getQuestionStage} from "../../tools/function";
 
@@ -69,33 +68,57 @@ function toggleAnswerSelection(index) {
     }
 }
 
+function getEllipse(stage) {
+    if (stage === 0) {
+        return (
+            <svg className="quizEllipse1">
+                <ellipse id="Ellipse_54" rx="224.5" ry="19" cx="224.5" cy="19"/>
+            </svg>
+        );
+    } else if (stage === 1) {
+        return (
+            <svg className="quizEllipse2">
+                <ellipse id="Ellipse_1" rx="345.5" ry="25" cx="345.5" cy="25"/>
+            </svg>
+        );
+    }
+}
+
 function Quiz() {
 
     const [questionList /*setEventList*/] = useState(
         [{
-            productIMG: '',
-            questionText: 'Wie viel Prozent \nunserer Getränke \nin Deutschland \nsind sugarfree?',
-            answer: '50%',
-            answerChoices: {
-                choice1: 50,
-                choice2: 20,
-                choice3: 5,
-                choice4: 1
-            }
-        },
-        {
-            productIMG: '',
-            questionText: 'Wie viel Prozent \nunserer Produkte \nsind zuckerreduziert \noder zuckerfrei',
-            answer: '70%',
-            answerChoices: {
-                choice1: 10,
-                choice2: 30,
-                choice3: 70,
-                choice4: 50
-            }
-        },
+                productIMG: img1,
+                imageClass: 'image1',
+                questionText: 'Wie viel Prozent \nunserer Getränke \nin Deutschland \nsind sugarfree?',
+                answer: '50%',
+                answerChoices: {
+                    choice1: 50,
+                    choice2: 20,
+                    choice3: 5,
+                    choice4: 1
+                },
+                pTagClass: 'questionText1',
+                answerSpan: 'answerSpan1',
+            },
+            {
+                productIMG: img2,
+                imageClass: 'image2',
+                questionText: 'Wie viel Prozent \nunserer Produkte \nsind zuckerreduziert \noder zuckerfrei?',
+                infoText: 'Was meinst Du? Tippe auf die Schätzung \nDeiner Wahl.',
+                answer: '70%',
+                answerChoices: {
+                    choice1: 10,
+                    choice2: 30,
+                    choice3: 70,
+                    choice4: 50
+                },
+                pTagClass: 'questionText2',
+                answerSpan: 'answerSpan2',
+            },
         ]
     );
+
     // todo questions
     let stage = getQuestionStage();
     console.log(`stage = ${stage}`);
@@ -108,8 +131,8 @@ function Quiz() {
             <div className="contentWrapper">
                 <div className="quizQuestionWrapper" >
                     <div className="quizQuestion">
-                        <p>{questionList[stage].questionText}</p>
-                        <p>Was meinst Du? Tippe auf die Schätzung Deiner Wahl.</p>
+                        <p className={questionList[stage].pTagClass}>{questionList[stage].questionText}</p>
+                        <p>{questionList[stage].infoText}</p>
                     </div>
                     <div className="quizAnswerWrapper">
                         <div
@@ -192,11 +215,8 @@ function Quiz() {
                 </div>
                 <div className="quizFieldWrapper">
                         <div className="imageWrapper">
-                            <img className= "Bild_50 "src={img1} alt=""/>
-                            <svg className="Ellipse_54">
-                            		<ellipse id="Ellipse_54" rx="224.5" ry="19" cx="224.5" cy="19">
-                            		</ellipse>
-                            </svg>
+                            <img className={questionList[stage].imageClass} src={questionList[stage].productIMG} alt=""/>
+                            {getEllipse(stage)}
                     </div>
                 </div>
                 <div id="buttonInactive" className="buttonWrapper active unanswered" style={active}>

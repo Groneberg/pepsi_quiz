@@ -1,45 +1,22 @@
-.contentWrapper {
-    display: flex;
-}
-
-/*.confirmationContainer {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/
-/*.confirmationFeedbackWrapper {*/
-/*    color: rgba(255,255,255,1);*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/
-
-/*.confirmationFeedback {*/
-/*    margin: 100px 0 0 60px;*/
-/*    width: 850px;*/
-/*    font-size: 90px;*/
-/*    font-weight: bold;*/
-/*    line-height: 90px;*/
-/*    color: rgba(216,232,255,1);*/
-/*}*/
-
-/*.confirmationFeedback p:nth-of-type(1) {*/
-/*    color: rgba(243,146,40,1);*/
-/*}*/
-/*.confirmationFeedbackInfo {*/
-/*    font-size: 28px;*/
-/*    line-height: 34px;*/
-/*    font-weight: normal;*/
-/*    margin-top: 100px;*/
-/*    width: 540px;*/
-/*}*/
-
-.firstImage {
+.confirmationNutriImageDisplay img {
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
     position: absolute;
+    overflow: visible;
+}
+
+.firstImage1 {
     width: 231.385px;
     height: 721px;
     left: 1317.614px;
     top: 100px;
-    overflow: visible;
+}
+
+.firstImage2 {
+    width: 231.385px;
+    height: 721px;
+    left: 1291.308px;
+    top: 110px;
+    z-index: 10;
 }
 
 .secondImage {
@@ -48,18 +25,17 @@
     height: 124px;
     left: 1166px;
     top: 556px;
-    overflow: visible;
+    z-index: 15;
 }
 
-.rectangle1 {
+.rectangle5 {
     filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.161));
-    position: absolute;
-    overflow: visible;
     width: 88px;
     height: 112px;
     left: 1216px;
     top: 590px;
     fill: rgba(149,193,45,1);
+    z-index: 20;
 }
 
 .B {
@@ -74,11 +50,10 @@
     font-weight: bold;
     font-size: 55px;
     color: rgba(255,255,255,1);
+    z-index: 20;
 }
 
 .confirmationNutriEllipse {
-    position: absolute;
-    overflow: visible;
     width: 506px;
     height: 38px;
     left: 1103px;
@@ -90,17 +65,9 @@
     fill: rgba(0,0,0,1);
 }
 
-.buttonWrapper .continueLink {
-    width: 254px;
-    height: 92px;
-    text-align: right;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 28px;
-}
-
 .answered {
     opacity: 1;
     color: #1A222E;
 }
+
 

@@ -6,7 +6,7 @@ import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/kisspng-fizzy-drinks-pepsi-max.png';
 import img3 from '../../img/lipton.png';
 import img4 from '../../img/schwipschwap.png';
-import img5 from '../../img/NoPath_-_Kopie.png';
+import img5 from '../../img/punika2.png';
 import img6 from '../../img/lays.png';
 import {getQuestionStage, initApp} from '../../tools/function';
 
@@ -16,9 +16,16 @@ const position_D = { x: 0, y: 0 };
 
 let selectedAnswer = '';
 let answerArray = [false,false,false];
-let droped_1 = false;
-let droped_2 = false;
-let droped_3 = false;
+let droped = {
+    droped_1: false,
+    dropedItem_1: null,
+    droped_2: false,
+    dropedItem_2: null,
+    droped_3: false,
+    dropedItem_3: null,
+    nowDraged: null,
+}
+
 let dropRectArray;
 let fields;
 
@@ -31,7 +38,7 @@ const active = {
 };
 
 function dragDropCheckField() {
-    if (droped_1 && droped_2 && droped_3) {
+    if (droped.droped_1 && droped.droped_2 && droped.droped_3) {
         const buttonInactive = document.getElementById("buttonInactive");
         const buttonActive = document.getElementById("buttonActive");
         buttonInactive.style.display = inactive.display;
@@ -84,16 +91,16 @@ function collisionDetection(selector, dropRectArray) {
             fields[i].classList.add('dropGlow');
         } else {
             fields[i].classList.remove('dropGlow');
-            if (droped_1) {
+            if (droped.dropedItem_1 !== null) {
                 fields[0].classList.add('dropGlow');
             }
-            if (droped_2) {
+            if (droped.dropedItem_2 !== null) {
                 fields[1].classList.add('dropGlow');
             }
-            if (droped_3) {
+            if (droped.dropedItem_3 !== null)  {
                 fields[2].classList.add('dropGlow');
             }
-            if (droped_1 && droped_2 && droped_3) {
+            if (droped.droped_1 && droped.droped_2 && droped.droped_3) {
                 fields[i].classList.add('dropGlow');
             }
         }
@@ -111,6 +118,8 @@ interact('.draggable_D').draggable({
             position_D.y += event.dy;
             event.target.style.transform =
                 `translate(${position_D.x}px, ${position_D.y}px)`;
+            droped.nowDraged = event.target.id;
+            console.log(droped.nowDraged);
             collisionDetection('.drag1', dropRectArray);
         },
     }
@@ -127,6 +136,8 @@ interact('.draggable_B').draggable({
 
             event.target.style.transform =
                 `translate(${position_B.x}px, ${position_B.y}px)`;
+            droped.nowDraged = event.target.id;
+            console.log(droped.nowDraged);
             collisionDetection('.drag2', dropRectArray);
         },
     }
@@ -143,6 +154,8 @@ interact('.draggable_C').draggable({
 
             event.target.style.transform =
                 `translate(${position_C.x}px, ${position_C.y}px)`;
+            droped.nowDraged = event.target.id;
+            console.log(droped.nowDraged);
             collisionDetection('.drag3', dropRectArray);
         },
     }
@@ -152,81 +165,108 @@ interact('.dropField_1').dropzone({
         ondrop: function (event) {
             checkNutriAnswer(0, event.target.id);
             localStorage.setItem('dragDropAnswerArray', answerArray);
-            droped_1 = true;
+            droped.droped_1 = true;
+            droped.dropedItem_1 = event.relatedTarget.id;
             dragDropCheckField();
             setDragDropAnswerElement();
-            console.log(`droped_1 = ${droped_1}`);
+            console.log(`droped_1 = ${droped.droped_1}`);
+            console.log(droped);
         }
     }).on('dropactivate', function (event) {
 
     }).on('dragleave', function (event) {
-        console.log('dragleave');
-        droped_1 = false;
-        console.log(`droped_1 = ${droped_1}`);
+        if (droped.dropedItem_1 === event.relatedTarget.id) {
+            droped.dropedItem_1 = null;
+            console.log('dragleave');
+            droped.droped_1 = false;
+        } else if (droped.dropedItem_1 !== event.relatedTarget.id && droped.dropedItem_1 === null) {
+            console.log('dragleave');
+            droped.droped_1 = false;
+        }
+        console.log(`droped_1 = ${droped.droped_1}`);
+        console.log(droped);
 });
 
 interact('.dropField_2').dropzone({
         ondrop: function (event) {
             checkNutriAnswer(1, event.target.id);
             localStorage.setItem('answerArray1', answerArray);
-            droped_2 = true;
+            droped.droped_2 = true;
+            droped.dropedItem_2 = event.relatedTarget.id;
             dragDropCheckField();
             setDragDropAnswerElement();
-            console.log(`droped_2 = ${droped_2}`);
+            console.log(`droped_2 = ${droped.droped_2}`);
+            console.log(droped);
         }
     }).on('dropactivate', function (event) {
 
     }).on('dragleave', function (event) {
-        console.log('dragleave');
-        droped_2 = false;
-        console.log(`droped_2 = ${droped_2}`);
+        if (droped.dropedItem_2 === event.relatedTarget.id) {
+            droped.dropedItem_2 = null;
+            console.log('dragleave');
+            droped.droped_2 = false;
+        } else if (droped.dropedItem_1 !== event.relatedTarget.id && droped.dropedItem_1 === null) {
+            console.log('dragleave');
+            droped.droped_2 = false;
+        }
+        console.log(`droped_2 = ${droped.droped_2}`);
+        console.log(droped);
 });
 
 interact('.dropField_3').dropzone({
         ondrop: function (event) {
             checkNutriAnswer(2, event.target.id);
             localStorage.setItem('answerArray1', answerArray);
-            droped_3 = true;
+            droped.droped_3 = true;
+            droped.dropedItem_3 = event.relatedTarget.id;
             dragDropCheckField();
             setDragDropAnswerElement();
-            console.log(`droped_3 = ${droped_3}`);
+            console.log(`droped_3 = ${droped.droped_3}`);
+            console.log(droped);
         }
     }).on('dropactivate', function (event) {
 
     }).on('dragleave', function (event) {
-        console.log('dragleave');
-        droped_3 = false;
-        console.log(`droped_3 = ${droped_3}`);
+        if (droped.dropedItem_3 === event.relatedTarget.id) {
+            droped.dropedItem_3 = null;
+            console.log('dragleave');
+            droped.droped_3 = false;
+        } else if (droped.dropedItem_1 !== event.relatedTarget.id && droped.dropedItem_1 === null) {
+            console.log('dragleave');
+            droped.droped_3 = false;
+        }
+        console.log(`droped_3 = ${droped.droped_3}`);
+        console.log(droped);
 });
 
 function DragDrop() {
     const [questionList /*setEventList*/] = useState(
         [{
-            productIMG1: img1,
-            productIMG2: img2,
-            productIMG3: img3,
-            nutriScore1: 'D',
-            nutriScore2: 'B',
-            nutriScore3: 'C',
-            answerNutri1: 'B',
-            answerNutri2: 'D',
-            answerNutri3: 'C',
-            questionText: 'Kennst Du den Nutri Score der folgenden Produkte?',
-            infoText: 'Welches Pepsi-Produkt hat Deiner Meinung nach den Nutri Score B verdient, welches hat C und D? \nSchnapp Dir den entsprechenden Score und ordne zu.'
-        },
-        {
-            productIMG1: img4,
-            productIMG2: img5,
-            productIMG3: img6,
-            nutriScore1: 'D',
-            nutriScore2: 'B',
-            nutriScore3: 'C',
-            answerNutri1: 'C',
-            answerNutri2: 'B',
-            answerNutri3: 'D',
-            questionText: 'Kennst Du den Nutri Score der folgenden Produkte?',
-            infoText: 'Welches Pepsi-Produkt hat Deiner Meinung nach den Nutri Score B verdient, welches hat C und D? \nSchnapp Dir den entsprechenden Score und ordne zu.'
-        },
+                productIMG1: img1,
+                productIMG2: img2,
+                productIMG3: img3,
+                nutriScore1: 'D',
+                nutriScore2: 'B',
+                nutriScore3: 'C',
+                answerNutri1: 'B',
+                answerNutri2: 'D',
+                answerNutri3: 'C',
+                questionText: 'Kennst Du den Nutri Score der folgenden Produkte?',
+                infoText: 'Welches Pepsi-Produkt hat Deiner Meinung nach den Nutri Score B verdient, welches hat C und D? \nSchnapp Dir den entsprechenden Score und ordne zu.'
+            },
+            {
+                productIMG1: img4,
+                productIMG2: img5,
+                productIMG3: img6,
+                nutriScore1: 'D',
+                nutriScore2: 'B',
+                nutriScore3: 'C',
+                answerNutri1: 'C',
+                answerNutri2: 'B',
+                answerNutri3: 'D',
+                questionText: 'Kennst Du den Nutri Score der folgenden Produkte?',
+                infoText: 'Welches Pepsi-Produkt hat Deiner Meinung nach den Nutri Score B verdient, welches hat C und D? \nSchnapp Dir den entsprechenden Score und ordne zu.'
+            },
         ]
     );
 
@@ -236,13 +276,13 @@ function DragDrop() {
     });
 
     //todo
-    initApp();
-    if (localStorage.getItem('stage') === null) {
+    // initApp();
+    if (localStorage.getItem('stage') === null || Number.parseInt(localStorage.getItem('stage')) >= 2) {
         initApp();
     }
+
     //todo stage
-    // let stage = getQuestionStage();
-    let stage = 1;
+    let stage = getQuestionStage();
     console.log(`stage = ${stage}`);
 
     return (
@@ -256,6 +296,7 @@ function DragDrop() {
                     </div>
                     <div className="dragDropAnswerWrapper">
                         <div
+                            id="D"
                             className="answerD draggable_D drag1 beforeDragAnimation"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore1;
@@ -270,6 +311,7 @@ function DragDrop() {
                                 <span>D</span>
                         </div>
                         <div
+                            id="B"
                             className="answerB draggable_B drag2 beforeDragAnimation"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore2;
@@ -285,6 +327,7 @@ function DragDrop() {
                                 <span>B</span>
                         </div>
                         <div
+                            id="C"
                             className="answerC draggable_C drag3 beforeDragAnimation"
                             onMouseDown={() => {
                                 selectedAnswer = questionList[stage].nutriScore3;

@@ -11,6 +11,12 @@ const dragDropResult = localStorage.getItem('dragDropResult');
 const scaleResult = localStorage.getItem('scaleResult');
 const quizResult = localStorage.getItem('quizResult');
 
+let stage = getQuestionStage();
+console.log(`stage = ${stage}`);
+
+stage++;
+console.log(`stage = ${stage}`);
+
 function getQuizListIndex() {
     if (dragDropResult === 'true' && scaleResult === 'true' && quizResult === 'true') {
         pepsiPlacement = '1';
@@ -81,12 +87,6 @@ function EndScreen() {
         ]
     );
 
-    let stage = getQuestionStage();
-    console.log(`stage = ${stage}`);
-
-    stage++;
-    console.log(`stage = ${stage}`);
-
     setQuestionStage(stage);
 
     return (
@@ -104,7 +104,7 @@ function EndScreen() {
                     </p>
             </div>
                 <div className="buttonWrapper continueLink answered" >
-                    <a className="continueLink" href="/start">
+                    <a className="continueLink" href="/">
                         <span>Ende</span>
                         <span>Quiz beenden</span>
                     </a>

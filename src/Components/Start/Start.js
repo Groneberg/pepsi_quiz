@@ -17,7 +17,7 @@ function Start() {
                 </div>
                 <div className="startInfoWrapper">
                     <p className="info-4">
-                        Zeige in 3 Antworten, dass Du das Zeug zum
+                        Zeige in 3 Aufgaben, dass Du das Zeug zum
                         Echten Pepsi-Pro hast. Am Ende wartet eine Eiskalte Pepsi auf Dich!
                     </p>
                 </div>

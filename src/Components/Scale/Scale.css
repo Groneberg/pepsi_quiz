@@ -1,7 +1,3 @@
-.contentWrapper {
-    display: flex;
-}
-
 .scaleContainer {
     display: flex;
     flex-direction: column;
@@ -17,15 +13,27 @@
     width: 585px;
 }
 
-.scaleQuestion p:nth-of-type(1) {
+.scaleQuestion .questionText1:nth-of-type(1) {
     font-weight: bold;
     font-size: 60px;
 }
 
-.scaleQuestion p:nth-of-type(2) {
+.scaleQuestion .questionText1:nth-of-type(2) {
     font-weight: normal;
     font-size: 28px;
     margin-top: 95px;
+    color: rgba(216,232,255,1);
+}
+
+.scaleQuestion .questionText2:nth-of-type(1) {
+    font-weight: bold;
+    font-size: 42px;
+}
+
+.scaleQuestion .questionText2:nth-of-type(2) {
+    font-weight: normal;
+    font-size: 25px;
+    margin-top: 70px;
     color: rgba(216,232,255,1);
 }
 
@@ -48,9 +56,14 @@
     z-index: 20;
 }
 
-.scaleAnswerWrapper div.answer {
+.scaleAnswerWrapper div.answer .answerSpan1 {
     font-weight: bold;
     font-size: 40px;
+}
+
+.scaleAnswerWrapper div.answer .answerSpan2 {
+    font-weight: bold;
+    font-size: 24px;
 }
 
 .scaleAnswerWrapper div.answer:nth-of-type(4),
@@ -83,8 +96,9 @@
 }
 
 .scaleField img {
-    width: 168px;
-    height: 524px;
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -116,7 +130,7 @@
     flex-shrink: 0;
 }
 
-.imageWrapper .scaleFillerEllipse {
+.scale .imageWrapper .scaleFillerEllipse {
     top: -35px;
     left: 5px;
 }
@@ -131,7 +145,14 @@
     justify-content: flex-end;
     align-items: center;
     z-index: 10;
+}
+
+.scale .filler .fillerSpan1 {
     font-size: 32px;
+}
+
+.scale .filler .fillerSpan2 {
+    font-size: 24px;
 }
 
 .filling {
@@ -144,25 +165,30 @@
     opacity: 1;
 }
 
-
-
-.Bild_44 {
-    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-    position: absolute;
+.scaleField .imageWrapper .image1 {
     width: 168.384px;
     height: 524px;
     left: 1380.615px;
     top: 267px;
-    overflow: visible;
+}
+
+.scaleField .imageWrapper .image2 {
+    width: 168.384px;
+    height: 524px;
+    left: 1380.615px;
+    top: 275px;
+}
+
+.scaleField .imageWrapper .image3 {
+    width: 263px;
+    height: 461px;
+    left: 1334px;
+    top: 329px;
 }
 
 .Ellipse_44 {
-    position: absolute;
-    overflow: visible;
     width: 287px;
     height: 38px;
     left: 1320px;
     top: 774px;
-    font-family: Montserrat, sans-serif;
-    font-weight: 500;
 }

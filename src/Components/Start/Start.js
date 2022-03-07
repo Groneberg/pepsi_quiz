@@ -15,6 +15,7 @@ function Start() {
                 <div className="startInfoWrapper">
                     <p className="info-3">Pepsi-Experte?</p>
                 </div>
+
                 <div className="startInfoWrapper">
                     <p className="info-4">
                         Zeige in 3 Aufgaben, dass Du das Zeug zum

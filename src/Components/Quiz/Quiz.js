@@ -2,6 +2,8 @@ import './Quiz.css'
 import Header from "../Header/Header";
 import img1 from '../../img/Bild_2.png';
 import img2 from '../../img/collection.png';
+// später suchen
+import img3 from '../../img/collection.png';
 import {useState} from "react";
 import {getQuestionStage} from "../../tools/function";
 
@@ -115,6 +117,21 @@ function Quiz() {
                 },
                 pTagClass: 'questionText2',
                 answerSpan: 'answerSpan2',
+            },
+            {
+                productIMG: img3,
+                imageClass: 'image3',
+                questionText: 'Schätz mal! Wie viel Salz ist in den Lay\'s light drin?',
+                infoText: 'Was meinst Du? Tippe auf die Schätzung \nDeiner Wahl.',
+                answer: '0,42g',
+                answerChoices: {
+                    choice1: 0,
+                    choice2: "0,42",
+                    choice3: 4,
+                    choice4: 42
+                },
+                pTagClass: 'questionText3',
+                answerSpan: 'answerSpan3',
             },
         ]
     );

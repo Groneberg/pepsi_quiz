@@ -65,30 +65,36 @@ function ConfirmationScale() {
                 {
                     resultText: 'Yesss, richtig!',
                     infoText: 'Es sind genau \n0g Zucker pro 100ml.',
+                    info2: 'Unser Ziel ist es, vielfältige Zutaten einzusetzen und zugesetzten Zucker zu reduzieren. Bereits die Hälfte unserer Getränke in Deutschland ist zuckerfrei.',
                 },
                 {
                     resultText: 'Fast richtig!',
                     infoText: 'Es sind genau \n0g Zucker pro 100ml.',
+                    info2: 'Unser Ziel ist es, vielfältige Zutaten einzusetzen und zugesetzten Zucker zu reduzieren. Bereits die Hälfte unserer Getränke in Deutschland ist zuckerfrei.',
                 },
             ],
             [
                 {
                     resultText: 'Yesss, richtig!',
                     infoText: 'Es sind etwa 12Mio. Lego-steine.',
+                    info2: 'Durch die Umstellung auf 100% rPET bis Ende 2021 sparen wir jährlich rund 15.000 Tonnen Neuplastik in Deutschland ein. Diese Menge entspricht etwa 12,42 Mio. \nLego-Steinen!',
                 },
                 {
                     resultText: 'Fast richtig!',
                     infoText: 'Es sind etwa 12Mio. Lego-steine.',
+                    info2: 'Durch die Umstellung auf 100% rPET bis Ende 2021 sparen wir jährlich rund 15.000 Tonnen Neuplastik in Deutschland ein. Diese Menge entspricht etwa 12,42 Mio. \nLego-Steinen!',
                 },
             ],
             [
                 {
                     resultText: 'Yesss, richtig!',
                     infoText: 'In den Doritos Dippers Lightly Salted sind 23g Fett.',
+                    info2: 'PepsiCo möchte gesündere Snacks anbieten, indem wir den Zusatz von Salz und gesättigten Fettsäuren reduzieren. Weniger Zucker, weniger Salz, weniger Fett!',
                 },
                 {
                     resultText: 'Fast richtig!',
                     infoText: 'In den Doritos Dippers Lightly Salted sind 23g Fett.',
+                    info2: 'PepsiCo möchte gesündere Snacks anbieten, indem wir den Zusatz von Salz und gesättigten Fettsäuren reduzieren. Weniger Zucker, weniger Salz, weniger Fett!',
                 },
             ],
         ]
@@ -96,7 +102,7 @@ function ConfirmationScale() {
 
     //todo stage
     let stage = getQuestionStage();
-    // let stage = 1;
+    // let stage = 3;
     console.log(`stage = ${stage}`);
 
     return (
@@ -107,11 +113,7 @@ function ConfirmationScale() {
                     <div className="confirmationFeedback">
                         <p>{resultTextList[stage][scaleResultIndex].resultText}</p>
                         <p>{resultTextList[stage][scaleResultIndex].infoText}</p>
-                        <p className="confirmationFeedbackInfo">
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                            sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                            magna aliquyam et accusam et justo duo dolores et ea
-                        </p>
+                        <p className="confirmationFeedbackInfo">{resultTextList[stage][scaleResultIndex].info2}</p>
                     </div>
                     {getScaleFeedbackInfo(stage)}
                 </div>

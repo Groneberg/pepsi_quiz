@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  pepsi_quiz:
+    build:
+      context: .
+    volumes:
+      - .:/pepsi_quiz
+    ports:
+      - 3000:3000
+    image: app:pepsi_quiz
+    container_name: pepsi_quiz_container
+    command: npm run start

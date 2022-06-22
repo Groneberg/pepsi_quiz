@@ -2,7 +2,7 @@ import './EndScreen.css'
 import Header from "../Header/Header";
 import img1 from '../../img/PepsiCo_Lays_mit_Nutri-Score_2.png';
 import img2 from '../../img/Bild_2.png';
-import img3 from '../../img/pepsican.png';
+import img3 from '../../img/pepsican2.png';
 import {useState} from "react";
 import {setQuestionStage, getQuestionStage} from '../../tools/function';
 

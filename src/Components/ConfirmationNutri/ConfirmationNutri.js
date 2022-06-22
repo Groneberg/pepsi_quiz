@@ -72,24 +72,36 @@ function ConfirmationNutri() {
                 {
                     resultText: 'Du Pepsi-Profi,\n richtig!',
                     infoText: 'Pepsi Max hat \nNutriscore B!!',
-                    info2: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n nonumy eirmod tempor invidunt ut labore et dolore\n magna aliquyam et accusam et justo duo dolores et ea'
+                    info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
                 },
                 {
                     resultText: 'Knapp aber \nnicht richtig!',
                     infoText: 'Pepsi Max hat \nNutriscore B!!',
-                    info2: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n nonumy eirmod tempor invidunt ut labore et dolore\n magna aliquyam et accusam et justo duo dolores et ea'
+                    info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
                 },
             ],
             [
                 {
                     resultText: 'Du Pepsi-Profi,\n richtig!',
                     infoText: 'Punika hat \nNutriscore B!!',
-                    info2: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n nonumy eirmod tempor invidunt ut labore et dolore\n magna aliquyam et accusam et justo duo dolores et ea'
+                    info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
                 },
                 {
                     resultText: 'Knapp aber \nnicht richtig!',
                     infoText: 'Punika hat \nNutriscore B!!',
-                    info2: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n nonumy eirmod tempor invidunt ut labore et dolore\n magna aliquyam et accusam et justo duo dolores et ea'
+                    info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
+                },
+            ],
+            [
+                {
+                    resultText: 'Du Pepsi-Profi,\n richtig!',
+                    infoText: 'Punika hat \nNutriscore B!!',
+                    info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
+                },
+                {
+                    resultText: 'Knapp aber \nnicht richtig!',
+                    infoText: 'Punika hat \nNutriscore B!!',
+                    info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
                 },
             ],
         ]
@@ -97,7 +109,7 @@ function ConfirmationNutri() {
 
     //todo stage
     let stage = getQuestionStage();
-    // let stage = 1;
+    // let stage = 3;
     console.log(`stage = ${stage}`);
 
     return (

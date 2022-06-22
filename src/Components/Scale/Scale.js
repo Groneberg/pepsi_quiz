@@ -99,7 +99,7 @@ function Scale() {
         {
             productIMG: img2,
             imageClass: 'image2',
-            answer: '12Mio.',
+            answer: '12 Mio.',
             possibilities: [1,2,5,10,20,50],
             unit: 'Mio.',
             multiplicationFactor: 3,

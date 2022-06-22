@@ -5,6 +5,7 @@
     left: 859.92px;
     top: 495.96px;
     overflow: visible;
+    z-index: 10;
 }
 
 .fiftyPercent{
@@ -19,6 +20,7 @@
     font-weight: bold;
     font-size: 41px;
     color: rgba(255,255,255,1);
+    z-index: 10;
 }
 
 .fieldWrapper {
@@ -28,37 +30,56 @@
     margin: 100px 0 0 60px;
 }
 
-.feedbackEllipse {
+.feedbackEllipse1 {
     width: 594px;
     height: 38px;
     left: 906px;
     top: 1014px;
 }
 
-#feedbackEllipse {
-    opacity: 0.5;
-    fill: rgba(0,0,0,1);
+.feedbackEllipse2 {
+    width: 764px;
+    height: 58px;
+    left: 736px;
+    top: 713px;
 }
 
-.firstImageQuiz {
+.quizFeedbackImageWrapper img {
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
     position: absolute;
-    width: 340px;
-    height: 1000px;
-    left: 1022px;
-    top: 32px;
     overflow: visible;
-    z-index: -1;
 }
 
-.secondImageQuiz {
-    position: absolute;
-    width: 1000px;
+.ImageQuiz1 {
+    width: 340px;
     height: 1000px;
-    left: 874px;
-    top: 95px;
-    overflow: visible;
-    z-index: -1;
+    left: 954px;
+    top: 45px;
+    z-index: 2;
+}
+
+.ImageQuiz2 {
+    width: 476px;
+    height: 958px;
+    left: 1118px;
+    top: 85px;
+    z-index: 1;
+}
+
+.ImageQuiz3 {
+    width: 340px;
+    height: 1000px;
+    left: 954px;
+    top: 45px;
+    z-index: 2;
+}
+
+.ImageQuiz4 {
+    width: 483px;
+    height: 448px;
+    left: 877px;
+    top: 310px;
+    z-index: 2;
 }
 
 .confirmationFeedbackWrapper div.smaller {
@@ -72,6 +93,7 @@
     height: 248px;
     left: 870px;
     top: 493px;
+    z-index: 10;
 }
 
 #feedbackImageEllipse {

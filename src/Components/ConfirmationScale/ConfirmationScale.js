@@ -3,8 +3,8 @@ import Header from "../Header/Header";
 import img1 from '../../img/Bild_2.png';
 import {useState} from "react";
 import {getQuestionStage} from '../../tools/function';
-import img2 from "../../img/Bild_3.png";
-import img3 from "../../img/punika2.png";
+// import img2 from "../../img/Bild_3.png";
+// import img3 from "../../img/punika2.png";
 
 function getScaleListIndex() {
     if (localStorage.getItem('scaleResult') === 'true') {

@@ -83,24 +83,24 @@ function ConfirmationNutri() {
             [
                 {
                     resultText: 'Du Pepsi-Profi,\n richtig!',
-                    infoText: 'Punika hat \nNutriscore B!!',
+                    infoText: 'Punica hat \nNutriscore B!!',
                     info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
                 },
                 {
                     resultText: 'Knapp aber \nnicht richtig!',
-                    infoText: 'Punika hat \nNutriscore B!!',
+                    infoText: 'Punica hat \nNutriscore B!!',
                     info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
                 },
             ],
             [
                 {
                     resultText: 'Du Pepsi-Profi,\n richtig!',
-                    infoText: 'Punika hat \nNutriscore B!!',
+                    infoText: 'Punica hat \nNutriscore B!!',
                     info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
                 },
                 {
                     resultText: 'Knapp aber \nnicht richtig!',
-                    infoText: 'Punika hat \nNutriscore B!!',
+                    infoText: 'Punica hat \nNutriscore B!!',
                     info2: 'Pepsi möchte Verbraucher dabei unterstützen, Entscheidungen zu treffen, die besser für den Planeten und die Menschen sind. Aus dem Grund nutzen wir für alle Getränke ab 2022 den Nutri-Score eingeführt.'
                 },
             ],
